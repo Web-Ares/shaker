@@ -1,0 +1,44 @@
+.ui {
+  font-size: 16px;
+
+  &__title {
+    padding: 20px;
+    font-size: 52px;
+    text-align: center;
+  }
+
+  &__item {
+    padding: 30px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &__sub-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__sub-title2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__example {
+    padding: 10px 0;
+    margin-bottom: 10px;
+
+    > div {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 5px;
+    }
+  }
+
+
+  //fonts
+  &__myriadpro-regular {
+    @include main-font1
+  }
+
+}
