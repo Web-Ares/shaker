@@ -1,4 +1,4 @@
-<div class="site__layout" data-href="php/whatwedo.php">
+<div class="site__layout" data-href="php/whoweare.php">
 
     <!-- site__header -->
     <header class="site__header">
@@ -44,9 +44,9 @@
                 <!-- site__nav -->
                 <nav class="site__menu-nav">
                     <a href="#" class="site__menu-link" data-href="php/whatwedo.php">What We Do</a>
-                    <a href="#" class="site__menu-link">Why Us</a>
-                    <a href="#" class="site__menu-link">Contact</a>
-                    <a href="#" class="site__menu-link">Log In/out</a>
+                    <a href="#" class="site__menu-link" data-href="php/whyus.php">Why Us</a>
+                    <a href="#" class="site__menu-link" data-href="php/contact.php">Contact</a>
+                    <a href="#" class="site__menu-link" data-href="php/login.php">Log In/out</a>
                 </nav>
                 <!-- /site__nav -->
 
@@ -60,32 +60,45 @@
     <!-- /site__header -->
 
     <!-- site__content -->
-    <div class="site__content site__content-layout_stretch full-height">
+    <div class="site__content site__content_center full-height">
 
-        <!-- site__content-inner -->
-        <div class="site__content-inner">
+        <!-- site__center -->
+        <div class="site__center">
 
-            <!-- site__center -->
-            <div class="site__center">
+            <!-- site__content-inner -->
+            <div class="site__content-inner site__content-inner_center">
 
-                <!-- site__title -->
-                <h1 class="site__title">
-                    <span>Who we are</span>
-                </h1>
-                <!-- /site__title -->
+                <!-- site__content-inner -->
+                <div class="site__content-inner-row">
 
-                <!-- what-we-do-text -->
-                <div class="what-we-do-text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam cumque exercitationem nulla obcaecati voluptates. Impedit iure nisi sed. Architecto expedita hic iure libero pariatur quam quasi ratione saepe tempora tempore!</p>
+                    <!-- site__title -->
+                    <h1 class="site__title">
+                        <span>Why Us</span>
+                    </h1>
+                    <!-- /site__title -->
+
+                    <!-- site__content-text -->
+                    <div class="site__content-text">
+                        <ul>
+                            <li>Our portfolio includes renowned artists & young talents.</li>
+                            <li>We know all the artists personally.</li>
+                            <li>We offer exclusive access to the artist's studio.</li>
+                            <li>All works are hand picked by us and our artists.</li>
+                            <li>All works are signed limited editions.</li>
+                            <li>Our pictures range between 1,000 € -50,000 €.</li>
+                            <li>We offer individual image concepts.</li>
+                        </ul>
+                    </div>
+                    <!-- /site__content-text -->
+
                 </div>
-                <!-- /what-we-do-text -->
-
+                <!-- site__content-inner -->
 
             </div>
-            <!-- /site__center -->
+            <!-- /site__content-inner -->
 
         </div>
-        <!-- /site__content-inner -->
+        <!-- /site__center -->
 
         <!-- site__down-link -->
         <a href="#" data-href="php/whoweare.php" class="site__down-link link-to-page_left"></a>

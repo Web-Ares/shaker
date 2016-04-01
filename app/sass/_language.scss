@@ -4,8 +4,8 @@
   top: 26px;
   right: 90px;
   height: 15px;
-  background: #5f5f5f;
-  border: 1px solid #5f5f5f;
+  background: $language-back1;
+  border: 1px solid $language-back1;
   border-radius: 3px;
   font-size: 12px;
   line-height: 12px;
@@ -16,25 +16,20 @@
   display: inline-block;
   vertical-align: top;
   padding: 1px 2px 0 0;
-  color: #fff;
+  color: $language-color1;
 
   &:hover {
-    color: #c7c7c7;
+    color: $language-hover-color1;
   }
 }
 .language span {
   display: inline-block;
   vertical-align: top;
   padding: 1px 3px 0 2px;
-  color: #6e6e6e;
-  background: #fff;
+  color: $language-color2;
+  background: $language-back2;
   border-radius: 3px;
   cursor: default;
-}
-@media (min-width: $tablet-landscape) {
-  .language {
-
-  }
 }
 
 

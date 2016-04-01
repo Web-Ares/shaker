@@ -10,7 +10,6 @@
 .site__layout {
   position: relative;
   z-index: 1;
-  -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 1;
 }
@@ -23,8 +22,7 @@
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  background: url("../img/loading.gif") no-repeat center #fff;
-  -webkit-transition: opacity 0.2s ease, visibility 0.2s ease;
+  background: url("../img/loading.gif") no-repeat center $site-loading-back;
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .site__loading.show {
@@ -51,14 +49,14 @@
   font-size: 12px;
   line-height: 14px;
   @include main-font1();
-  color: #bababa;
+  color: $site-header-user-color1;
 }
 .site__header-user span{
   display: block;
   font-size: 15px;
   line-height: 18px;
   @include main-font2();
-  color: #5f5f5f;
+  color: $site-header-user-color2;
 }
 .site__header-curations {
   position: absolute;
@@ -71,7 +69,7 @@
   font-size: 13px;
   line-height: 17px;
   @include main-font2();
-  color: #5f5f5f;
+  color: $site-header-curation-color;
 }
 
 .site__menu {
@@ -102,10 +100,9 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: #5f5f5f;
+    background: $site-menu-btn-back1;
     border-radius: 2px;
     content: '';
-    -webkit-transition: -webkit-transform 0.3s, background .3s;
     transition: transform 0.3s, background .3s;
   }
 
@@ -116,10 +113,9 @@
   width: 38px;
   height: 4px;
   margin-top: 3px;
-  background: #bababa;
+  background: $site-menu-btn-back2;
   font-size: 0;
   border-radius: 2px;
-  -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   @include absoluteCenter();
 
@@ -129,10 +125,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #bababa;
+    background: $site-menu-btn-back2;
     border-radius: 2px;
     content: '';
-    -webkit-transition: -webkit-transform 0.3s, background .3s;
     transition: transform 0.3s, background .3s;
   }
 
@@ -145,11 +140,11 @@
   }
 }
 .site__menu-btn.opened span {
-  background: #5f5f5f;
+  background: $site-menu-btn-back1;
 
   &:before,
   &:after {
-    background: #5f5f5f;
+    background: $site-menu-btn-back1;
   }
 }
 .site__menu-nav {
@@ -160,7 +155,7 @@
   right: 0;
   min-width: 109px;
   padding: 5px 0 9px;
-  background: rgba(255,255,255,0.9);
+  background: $site-menu-nav-back;
   border-radius: 3px;
   text-align: right;
   @include main-font1();
@@ -172,7 +167,7 @@
 }
 .site__menu-link {
   display: block;
-  color: #000000;
+  color: $site-menu-link-color;
   @include main-font1();
   font-size: 13px;
   line-height: 13px;
@@ -180,7 +175,7 @@
   transition: background 0.3s;
 
   &:hover {
-    background: #dfdfdf;
+    background: $site-menu-link-hover-color;
   }
 }
 
@@ -192,13 +187,13 @@
   bottom: 0;
   height: 70px;
   padding: 10px 0 0;
-  background: rgba(255,255,255,0.5);
+  background: $site-down-link-back;
   text-align: center;
   @include main-font1();
   transition: background 0.3s;
 
   &:hover {
-    background: rgba(255,255,255,0.8);
+    background: $site-down-link-hover-back;
   }
 
   &:after {
@@ -215,7 +210,7 @@
 .site__down-link span {
   font-size: 25px;
   line-height: 30px;
-  color: #444444;
+  color: $site-down-link-color;
 }
 
 .site__content {
@@ -229,7 +224,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
 }
 .site__content_absolute {
@@ -239,16 +233,13 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  -webkit-transform: translateY(100%);
   transform: translateY(100%);
   opacity: 0;
 }
 .site__content_from-bottom {
-  -webkit-transform: translateY(0);
   transform: translateY(0);
   opacity: 0;
 }
-
 
 .site__center {
   position: relative;
@@ -283,13 +274,16 @@
   padding: 170px 0 30px;
   font-size: 16px;
   line-height: 25px;
-  color: #bababa;
+  color: $site-content-inner-color1;
 }
 .site__content-inner p {
   margin: 0 0 30px;
 }
+.site__content-inner ul li {
+  margin: 0 0 6px;
+}
 .site__content-inner p span {
-  color: #5d5d5d;
+  color: $site-content-inner-color2;
 }
 
 @media (min-width: $phone-landscape) {
@@ -320,7 +314,6 @@
   .site__down-link span {
     font-size: 37px;
     line-height: 40px;
-    color: #444444;
   }
   .site__header {
     height: 90px;
