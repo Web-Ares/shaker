@@ -1,4 +1,4 @@
-<div class="site__layout" data-href="php/whyus.php">
+<div class="site__layout" data-href="php/login.php">
 
     <!-- site__header -->
     <header class="site__header">
@@ -61,25 +61,36 @@
 
                     <!-- site__title -->
                     <h1 class="site__title">
-                                <span>What
-                                    We
-                                    do</span>
+                        <span>Sign up</span>
                     </h1>
                     <!-- /site__title -->
 
                     <!-- site__content-text -->
                     <div class="site__content-text">
-                        <p>We are an exclusive art consultancy that provides our clients with curated art photography with high aesthetic value and craftsmanship. </p>
-                        <p>In addition to established artists our portfolio includes promising new comers. </p>
-                        <p>All the works  are  limited editions handpicked by the artists. </p>
-                        <p>Our consulting service guarantees an exclusive selection geared towards the individual tastes of our clients.</p>
+                        <p>Exclusively access our images & create a wishlist
+                            for a personal curated selection of photography.</p>
+
+                        <!-- enter-form -->
+                        <form class="enter-form" action="#">
+                            <input class="site__input" type="text" name="name" placeholder="Name">
+                            <input class="site__input" type="email" name="email" placeholder="Email">
+                            <input class="site__input" type="text" name="user-name" placeholder="User Name">
+
+                            <!-- enter-form__send -->
+                            <div class="enter-form__send">
+                                <button class="btn" type="submit">Create Account</button>
+                                <span class="enter-form__notice">Your password will be emailed</span>
+                            </div>
+                            <!-- /enter-form__send -->
+
+                        </form>
+                        <!-- enter-form -->
+
                     </div>
                     <!-- /site__content-text -->
 
                 </div>
                 <!-- site__content-inner -->
-
-                <p>To see the curated works from our artist log onto the <span>secure space</span></p>
 
             </div>
             <!-- /site__content-inner -->
@@ -88,7 +99,7 @@
         <!-- /site__center -->
 
         <!-- site__down-link -->
-        <a href="#" data-href="php/whyus.php" class="site__down-link link-to-page_left"></a>
+        <a href="#" data-href="php/login.php" class="site__down-link link-to-page_left"></a>
         <!-- /site__down-link -->
 
     </div>

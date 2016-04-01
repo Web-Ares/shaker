@@ -1,0 +1,40 @@
+.enter-form {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 330px;
+  width: 100%;
+}
+.enter-form div:first-child{
+
+}
+.enter-form__notice {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 15px;
+  line-height: 17px;
+  padding: 6px 0 0 4px;
+}
+.enter-form__send {
+  @include flexbox();
+  @include flex-direction();
+  @include flex-wrap( wrap );
+  @include justify-content( space-between );
+  @include align-items ( flex-start );
+  padding: 11px 0 0;
+}
+.enter-form__send_right {
+  @include justify-content( flex-end );
+}
+.enter-form__forgot {
+  font-size: 12px;
+  line-height: 15px;
+  color: #5d5d5d;
+  @include main-font2();
+  margin: 0 0 0 11px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+

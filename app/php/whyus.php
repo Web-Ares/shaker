@@ -1,4 +1,4 @@
-<div class="site__layout" data-href="php/whoweare.php">
+<div class="site__layout" data-href="php/limitedart.php">
 
     <!-- site__header -->
     <header class="site__header">
@@ -11,19 +11,6 @@
                 <img class="logo__inner" src="img/logo.png" width="208" height="90" alt="Shaker Wiener">
             </a>
             <!-- /logo -->
-
-            <!-- site__header-user -->
-            <div class="site__header-user">
-                Welcome Back
-                <span>Fredric Henrichade</span>
-            </div>
-            <!-- /site__header-user -->
-
-            <!-- site__header-user -->
-            <a href="#" class="site__header-curations">
-                My Personal Curations
-            </a>
-            <!-- /site__header-user -->
 
             <!-- language -->
             <div class="language">
@@ -42,11 +29,12 @@
                 <!-- /site__menu-btn -->
 
                 <!-- site__nav -->
-                <nav class="site__menu-nav">
+                <nav class="site__menu-nav site__menu-nav_ajax">
                     <a href="#" class="site__menu-link" data-href="php/whatwedo.php">What We Do</a>
                     <a href="#" class="site__menu-link" data-href="php/whyus.php">Why Us</a>
+                    <a href="#" class="site__menu-link" data-href="php/limitedart.php">Limited Exclusive Art</a>
                     <a href="#" class="site__menu-link" data-href="php/contact.php">Contact</a>
-                    <a href="#" class="site__menu-link" data-href="php/login.php">Log In/out</a>
+                    <a href="#" class="site__menu-link" data-href="php/login.php">Log In/Sign up</a>
                 </nav>
                 <!-- /site__nav -->
 
@@ -101,7 +89,7 @@
         <!-- /site__center -->
 
         <!-- site__down-link -->
-        <a href="#" data-href="php/whoweare.php" class="site__down-link link-to-page_left"></a>
+        <a href="#" data-href="php/limitedart.php" class="site__down-link link-to-page_left"></a>
         <!-- /site__down-link -->
 
     </div>

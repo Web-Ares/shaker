@@ -6,14 +6,12 @@
   z-index: 1;
   @include main-font1();
 }
-
 .site__layout {
   position: relative;
   z-index: 1;
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 1;
 }
-
 .site__loading {
   position: fixed;
   top: 0;
@@ -30,7 +28,6 @@
   visibility: visible;
   z-index: 30;
 }
-
 .site__header {
   position: absolute;
   top: 0;
@@ -70,8 +67,11 @@
   line-height: 17px;
   @include main-font2();
   color: $site-header-curation-color;
-}
 
+  &:hover {
+    text-decoration: underline;
+  }
+}
 .site__menu {
   position: absolute;
   top: 26px;
@@ -178,7 +178,6 @@
     background: $site-menu-link-hover-color;
   }
 }
-
 .site__down-link {
   position: absolute;
   z-index: 1;
@@ -212,7 +211,6 @@
   line-height: 30px;
   color: $site-down-link-color;
 }
-
 .site__content {
   position: relative;
   z-index: 2;
@@ -240,15 +238,13 @@
   transform: translateY(0);
   opacity: 0;
 }
-
 .site__center {
   position: relative;
-  z-index: 2;
   max-width: 990px;
+  width: 100%;
   padding: 0 25px;
   margin: 0 auto;
 }
-
 .site__title {
   margin: 0 0 20px;
   //background: repeating-linear-gradient(-45deg, #525252, #525252 2px, #6e6e6e 2px, #6e6e6e 4px);
@@ -256,7 +252,7 @@
   line-height: 45px;
   text-transform: uppercase;
   @include main-font7();
-
+  letter-spacing: -3px;
   -webkit-background-clip: text;
   color: transparent;
   background-color: #525252;
@@ -267,11 +263,12 @@
   //color: #000;
   //background: #fff;
   //mix-blend-mode: lighten;
+  //white-space: pre-line;
 }
-
-
 .site__content-inner {
-  padding: 170px 0 30px;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 170px 0 70px;
   font-size: 16px;
   line-height: 25px;
   color: $site-content-inner-color1;
@@ -284,6 +281,34 @@
 }
 .site__content-inner p span {
   color: $site-content-inner-color2;
+}
+input[type="text"].site__input ,
+input[type="password"].site__input ,
+input[type="email"].site__input ,
+input[type="phone"].site__input ,
+input[type="number"].site__input,
+textarea.site__area {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 31px;
+  margin: 0 0 10px;
+  padding: 10px 10px;
+  font-size: 15px;
+  line-height: 15px;
+  background: #f3f3f3;
+  color: #bababa;
+  border-radius: 3px;
+  border: none;
+  @include main-font1();
+  transition: background 0.3s;
+
+  &:focus {
+    background: #efefef;
+  }
+}
+textarea.site__area {
+  height: 100px;
 }
 
 @media (min-width: $phone-landscape) {
@@ -348,7 +373,8 @@
     @include align-items( center );
   }
   .site__content-inner {
-    padding: 90px 60px 15px;
+    padding: 110px 60px 110px;
+    max-width: 500px;
   }
 
 }
@@ -356,14 +382,14 @@
   .site {
 
   }
-
   .site__title {
     font-size: 100px;
     line-height: 90px;
     margin: 0 0 20px;
   }
-
   .site__content-inner {
+    max-width: 100%;
+    margin: 0;
     font-size: 20px;
     line-height: 30px;
   }
@@ -385,7 +411,6 @@
   .site__content-inner-row .site__content-text {
     width: 66%;
   }
-
   .site__content-text {
     padding: 0 0 0 24px;
     margin: 0 0 29px;

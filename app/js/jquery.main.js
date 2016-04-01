@@ -154,6 +154,7 @@
             _duration = 500,
             _dom = $( 'html, body' ),
             _content = $( '.site__layout' ),
+            _dataScroll = _content.data( 'scroll' ),
             _body = $( 'body' ),
             _loading = $( '.site__loading' );
 
@@ -169,7 +170,7 @@
 
                 } );
 
-                _obj.on( 'click', '.site__menu-link', function(e) {
+                _obj.on( 'click', '.site__menu-nav_ajax .site__menu-link', function() {
 
                     if( _actionClick ) {
                         _changeContent( $( this), $( 'body').find( '.site__layout' ) );
@@ -268,6 +269,8 @@
             },
             _addContent = function( newWrapper ) {
 
+                _dataScroll = newWrapper.data( 'scroll' );
+
                 _wrapper.addClass( 'site__content_top' );
                 _obj.append( newWrapper );
                 newWrapper.addClass( 'site__content_from-bottom' );
@@ -292,6 +295,7 @@
                     _wrapper.remove();
                     new Menu( newWrapper.find( '.site__menu' ) ).addEvents();
                 }, _duration );
+
 
             },
             _requestForContent = function() {
@@ -379,12 +383,10 @@
 
             },
             _checkAction = function() {
-
-                _actionScroll = _window.height() >= _content.innerHeight();
-
+                _actionScroll = ( _window.height() >= _content.innerHeight() && !( _dataScroll == false ) );
             },
             _checkActionScroll = function( elem ) {
-                _actionScroll = ( _window.scrollTop() + _window.height() ) >= elem.innerHeight();
+                _actionScroll = ( ( _window.scrollTop() + _window.height() ) >= elem.innerHeight()  &&  !( _dataScroll == false ) );
             },
             _changeContent = function( elem, elemParent ) {
 
@@ -403,7 +405,6 @@
 
             },
             _checkScroll = function( direction ) {
-
 
                 if( direction > 0 && _actionScroll ){
                     _changeContent( _body.find( '.site__layout' ), _body.find( '.site__layout' ) );

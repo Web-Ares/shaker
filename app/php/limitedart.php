@@ -1,4 +1,4 @@
-<div class="site__layout" data-href="php/whyus.php">
+<div class="site__layout" data-scroll="false">
 
     <!-- site__header -->
     <header class="site__header">
@@ -11,6 +11,19 @@
                 <img class="logo__inner" src="img/logo.png" width="208" height="90" alt="Shaker Wiener">
             </a>
             <!-- /logo -->
+
+            <!-- site__header-user -->
+            <div class="site__header-user">
+                Welcome Back
+                <span>Fredric Henrichade</span>
+            </div>
+            <!-- /site__header-user -->
+
+            <!-- site__header-user -->
+            <a href="#" class="site__header-curations">
+                My Personal Curations
+            </a>
+            <!-- /site__header-user -->
 
             <!-- language -->
             <div class="language">
@@ -61,35 +74,18 @@
 
                     <!-- site__title -->
                     <h1 class="site__title">
-                                <span>What
-                                    We
-                                    do</span>
+                        <span>Limited Exclusive Art</span>
                     </h1>
                     <!-- /site__title -->
 
-                    <!-- site__content-text -->
-                    <div class="site__content-text">
-                        <p>We are an exclusive art consultancy that provides our clients with curated art photography with high aesthetic value and craftsmanship. </p>
-                        <p>In addition to established artists our portfolio includes promising new comers. </p>
-                        <p>All the works  are  limited editions handpicked by the artists. </p>
-                        <p>Our consulting service guarantees an exclusive selection geared towards the individual tastes of our clients.</p>
-                    </div>
-                    <!-- /site__content-text -->
-
                 </div>
                 <!-- site__content-inner -->
-
-                <p>To see the curated works from our artist log onto the <span>secure space</span></p>
 
             </div>
             <!-- /site__content-inner -->
 
         </div>
         <!-- /site__center -->
-
-        <!-- site__down-link -->
-        <a href="#" data-href="php/whyus.php" class="site__down-link link-to-page_left"></a>
-        <!-- /site__down-link -->
 
     </div>
     <!-- /site__content -->
