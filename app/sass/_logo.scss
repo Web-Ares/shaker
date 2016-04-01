@@ -1,0 +1,40 @@
+.logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 104px;
+  height: 45px;
+}
+.logo_index {
+  width: 101px;
+  height: 57px;
+}
+.logo img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.logo .logo__inner {
+  display: block;
+}
+.logo_index .logo__inner {
+  display: none;
+}
+.logo_index .logo__index {
+  display: block;
+}
+.logo_index-black .logo__index-black {
+  display: block;
+}
+.logo_index-black .logo__index {
+  display: none;
+}
+
+@media (min-width: $tablet-portrait) {
+  .logo_index {
+    width: 203px;
+    height: 115px;
+  }
+}
+
+

@@ -1,6 +1,36 @@
 //fonts
 @mixin main-font1() {
-  font-family: "myriadpro-regular", sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+@mixin main-font2() {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font3() {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+@mixin main-font4() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+@mixin main-font5() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font6() {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+@mixin main-font7() {
+  font-family: 'Roboto Black', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
