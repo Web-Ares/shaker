@@ -214,6 +214,7 @@
 .site__content {
   position: relative;
   z-index: 2;
+  padding: 170px 0 70px;
   font-size: 16px;
   line-height: 25px;
   color: $site-content-inner-color1;
@@ -290,12 +291,10 @@
   //mix-blend-mode: lighten;
   //white-space: pre-line;
 }
-.site__content-inner {
-  padding: 170px 0 70px;
-  margin: 0 auto;
+.site__content__inner {
   text-align: center;
 }
-.site__content-inner_left {
+.site__content__inner_left {
   text-align: left;
 }
 input[type="text"].site__input ,
@@ -381,6 +380,9 @@ textarea.site__area {
     font-size: 19px;
     line-height: 21px;
   }
+  .site__content {
+    padding: 110px 0;
+  }
   .site__content_center {
     @include flexbox();
     @include flex-direction();
@@ -388,10 +390,7 @@ textarea.site__area {
     @include justify-content( center );
     @include align-items( center );
   }
-  .site__content-inner {
-    padding: 110px 0;
-  }
-  .site__content-inner_padding-side {
+  .site__content__inner {
     padding-left: 60px;
     padding-right: 60px;
   }
@@ -414,22 +413,19 @@ textarea.site__area {
     font-size: 20px;
     line-height: 30px;
   }
-  .site__content-inner {
-    margin: 0;
-  }
-  .site__content-inner-row {
+  .site__content__row {
     @include flexbox();
     @include flex-direction();
     @include justify-content( center );
     @include align-items();
     text-align: left;
   }
-  .site__content-inner-row .site__title {
+  .site__content__row .site__title {
     text-align: right;
     width: 34%;
     margin: 0;
   }
-  .site__content-inner-row .site__content-text {
+  .site__content__row .site__content-text {
     width: 66%;
   }
   .site__content-text {

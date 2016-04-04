@@ -54,7 +54,7 @@
         <div class="site__center">
 
             <!-- site__content-inner -->
-            <div class="site__content-inner site__content-inner_padding-side">
+            <div class="site__content__inner">
 
                 <!-- contact-info -->
                 <div class="contact-info">
@@ -94,7 +94,7 @@
 
                         <!-- contact-info__tel -->
                         <div class="contact-info__tel">
-                            <a href="tel:+49 151 52596195">+49 151 52596195</a>
+                            <a href="tel:+4915152596195">+49 151 52596195</a>
                         </div>
                         <!-- /contact-info__tel -->
 
@@ -130,7 +130,7 @@
 
                         <!-- contact-info__tel -->
                         <div class="contact-info__tel">
-                            <a href="tel:+97 254 308317">+97 254 308317</a>
+                            <a href="tel:+97254308317">+97 254 308317</a>
                         </div>
                         <!-- /contact-info__tel -->
 
@@ -141,7 +141,7 @@
                 <!-- /contact-info -->
 
             </div>
-            <!-- /site__content-inner -->
+            <!-- /site__content__inner -->
 
         </div>
         <!-- /site__center -->
@@ -154,4 +154,3 @@
     <!-- /site__content -->
 
 </div>
-

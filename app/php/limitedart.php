@@ -12,19 +12,6 @@
             </a>
             <!-- /logo -->
 
-            <!-- site__header-user -->
-            <div class="site__header-user">
-                Welcome Back
-                <span>Fredric Henrichade</span>
-            </div>
-            <!-- /site__header-user -->
-
-            <!-- site__header-user -->
-            <a href="#" class="site__header-curations">
-                My Personal Curations
-            </a>
-            <!-- /site__header-user -->
-
             <!-- language -->
             <div class="language">
                 <span>En</span>
@@ -61,28 +48,12 @@
     <!-- /site__header -->
 
     <!-- site__content -->
-    <div class="site__content site__content_padding site__content_center full-height">
+    <div class="site__content full-height">
 
         <!-- site__center -->
         <div class="site__center">
 
-            <!-- site__content-inner -->
-            <div class="site__content-inner site__content-inner_center">
 
-                <!-- site__content-inner -->
-                <div class="site__content-inner-row">
-
-                    <!-- site__title -->
-                    <h1 class="site__title">
-                        <span>Limited Exclusive Art</span>
-                    </h1>
-                    <!-- /site__title -->
-
-                </div>
-                <!-- site__content-inner -->
-
-            </div>
-            <!-- /site__content-inner -->
 
         </div>
         <!-- /site__center -->

@@ -53,11 +53,11 @@
         <!-- site__center -->
         <div class="site__center">
 
-            <!-- site__content-inner -->
-            <div class="site__content-inner site__content-inner_padding-side">
+            <!-- site__content__inner -->
+            <div class="site__content__inner">
 
-                <!-- site__content-inner -->
-                <div class="site__content-inner-row">
+                <!-- site__content__row -->
+                <div class="site__content__row">
 
                     <!-- site__title -->
                     <h1 class="site__title">
@@ -89,10 +89,10 @@
                     <!-- /site__content-text -->
 
                 </div>
-                <!-- site__content-inner -->
+                <!-- /site__content__row -->
 
             </div>
-            <!-- /site__content-inner -->
+            <!-- /site__content__inner -->
 
         </div>
         <!-- /site__center -->
