@@ -319,15 +319,15 @@ textarea.site__area {
   padding: 10px 10px;
   font-size: 15px;
   line-height: 15px;
-  background: #f3f3f3;
-  color: #bababa;
+  background: $site-input-back;
+  color: $site-input-color;
   border-radius: 3px;
   border: none;
   @include main-font1();
   transition: background 0.3s;
 
   &:focus {
-    background: #efefef;
+    background: $site-input-focus-back;
   }
 }
 textarea.site__area {
