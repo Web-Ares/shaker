@@ -1,7 +1,7 @@
 .btn {
   display: inline-block;
   vertical-align: top;
-  height: 31px;
+  height: 32px;
   padding: 0 10px;
   color: $btn-color;
   background: $btn-back;
@@ -21,4 +21,8 @@
     background: $btn-back-active;
   }
 
+}
+.btn_2 {
+  font-size: 20px;
+  line-height: 20px;
 }

@@ -1,0 +1,41 @@
+.personal-wish-list {
+
+}
+.personal-wish-list__layout {
+  margin: 0 0 41px;
+}
+.personal-wish-list__text p {
+  margin: 0 0 22px;
+}
+.personal-wish-list__layout > div{
+
+}
+.personal-wish-list__area {
+  padding: 30px 0 0;
+}
+.personal-wish-list__send {
+  text-align: right;
+}
+
+@media (min-width: $tablet-portrait) {
+  .personal-wish-list__layout > div{
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+  }
+}
+
+@media (min-width: $tablet-landscape) {
+  .personal-wish-list__layout > div{
+    width: 23.6%;
+  }
+  .personal-wish-list__layout > div:last-child {
+    width: 27.7%;
+  }
+  .personal-wish-list__text {
+    padding: 0 39% 0 0;
+    font-size: 23px;
+  }
+}
+
+

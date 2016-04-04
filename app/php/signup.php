@@ -54,7 +54,7 @@
         <div class="site__center">
 
             <!-- site__content-inner -->
-            <div class="site__content-inner site__content-inner_center">
+            <div class="site__content-inner site__content-inner_padding-side">
 
                 <!-- site__content-inner -->
                 <div class="site__content-inner-row">

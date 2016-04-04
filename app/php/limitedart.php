@@ -61,7 +61,7 @@
     <!-- /site__header -->
 
     <!-- site__content -->
-    <div class="site__content site__content_center full-height">
+    <div class="site__content site__content_padding site__content_center full-height">
 
         <!-- site__center -->
         <div class="site__center">
