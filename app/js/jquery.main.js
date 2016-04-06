@@ -149,7 +149,7 @@
             _actionClick = true,
             _actionScroll = false,
             _wrapper = null,
-            _lastPos,
+            _lastPos = 0,
             _duration = 500,
             _dom = $( 'html, body' ),
             _content = $( '.site__layout' ),
@@ -244,25 +244,19 @@
 
                         }
 
-                    },
-                    touchmove: function( e ) {
-
-                        var currentPos = e.originalEvent.touches[0].clientY;
-
-                        if ( currentPos > _lastPos ) {
-
-                            _checkScroll( -1 );
-
-
-                        } else if ( currentPos < _lastPos ) {
-
-                            _checkScroll( 1 );
-
-                        }
-
-                        _lastPos = currentPos;
-
                     }
+                    //touchmove: function( e ) {
+                    //
+                    //    _checkActionScroll( _body.find( '.site__layout' ) );
+                    //
+                    //    var currentPos = e.originalEvent.touches[0].clientY;
+                    //
+                    //    if ( currentPos > _lastPos ) {
+                    //
+                    //        _checkScroll( 1 );
+                    //
+                    //    }
+                    //}
                 } );
 
             },

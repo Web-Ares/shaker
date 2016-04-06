@@ -133,6 +133,19 @@
                     }
                 } );
 
+                _categoriesSet.on( 'click', '.categories__set-active', function() {
+                    var curItem = $( this );
+
+                    if( !( curItem.hasClass( 'opened' ) ) ) {
+                        curItem.addClass( 'opened' );
+                        _addNiceScroll( _categoriesSet.find( '.categories__set-drop-down' ) );
+                    } else {
+                        curItem.removeClass( 'opened' );
+                    }
+
+                    return false;
+                } );
+
             },
             _addNiceScroll = function( elem ) {
                 var dropMenu = elem,
