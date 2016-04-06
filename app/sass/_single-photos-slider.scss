@@ -1,0 +1,188 @@
+.single-photos-slider {
+  width: 100%;
+  height: 100%;
+}
+.single-photos-slider .swiper-button-next,
+.single-photos-slider .swiper-button-prev {
+  left: 0;
+  width: 26px;
+  height: 66px;
+  margin-top: -38px;
+  border-radius: 0 3px 3px 0;
+  background: $single-photos-slider-but-back;
+  transition: background 0.2s linear;
+  
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    width: 10px;
+    height: 30px;
+    background: url('../img/slider-arrow.png') no-repeat;
+    background-size: contain;
+    content: '';
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+.single-photos-slider .swiper-button-next {
+  left: auto;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+
+  &:after {
+    transform: translateY(-50%);
+  }
+}
+.single-photos-slider__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.swiper-slide_vertical .single-photos-slider__item {
+  height: 45.5%;
+
+  &:last-child {
+    top: 54.5%;
+  }
+}
+.single-photos-slider__info {
+  @include flexbox();
+  @include flex-direction();
+  @include justify-content( space-between );
+  @include align-items( flex-end );
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 5px 12px;
+  background: $single-photos-slider-info-back;
+  color: $single-photos-slider-info-color;
+  @include main-font4();
+  font-size: 13px;
+  line-height: 15px;
+}
+.single-photos-slider__info>div{
+  width: 60%;
+  text-align: left;
+}
+.single-photos-slider__info>div:last-child {
+  width: 40%;
+  text-align: right;
+}
+.single-photos-slider__author {
+  display: block;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 0 0 5px;
+}
+.single-photos-slider__price {
+  display: block;
+  margin: 0 0 5px;
+  font-size: 15px;
+  line-height: 17px;
+}
+.single-photos-slider__like {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 41px;
+  height: 36px;
+  border-radius: 3px;
+  background-image: url("../img/like.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 27px 24px;
+  background-color: $single-photos-slider-like-back1;
+  text-indent: -9999px;
+  transition: background 0.2s linear;
+
+  &:hover {
+    background-color: $single-photos-slider-like-back2;
+  }
+}
+.single-photos-slider__like.liked {
+  background-color: $single-photos-slider-like-back2;
+}
+.single-photos-slider__zoom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 41px;
+  height: 36px;
+  border-radius: 3px;
+  background-image: url("../img/zoom.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px 22px;
+  background-color: $single-photos-slider-zoom-back1;
+  text-indent: 9999px;
+  transition: background 0.2s linear;
+
+  &:hover {
+    background-color: $single-photos-slider-zoom-back2;
+  }
+}
+.single-photos-slider__sizes {
+  position: relative;
+  height: 15px;
+}
+.single-photos-slider__sizes-selected {
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.single-photos-slider__drop {
+  display: none;
+  position: absolute;
+  bottom: 28px;
+  right: 0;
+  padding: 10px 0;
+  background: $single-photos-slider-drop-back;
+  border-radius: 3px;
+}
+.single-photos-slider__name {
+  display: block;
+}
+.single-photos-slider__sizes-selected.active + .single-photos-slider__drop {
+  display: block;
+}
+.single-photos-slider__drop a{
+  display: block;
+  color: $single-photos-slider-drop-color;
+  padding: 5px;
+}
+.single-photos-slider__drop a.active {
+  background: $single-photos-slider-drop-back2;
+}
+.single-photos-slider__count {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media (min-width: $tablet-portrait) {
+  .swiper-slide_vertical .single-photos-slider__item {
+    width: 49.5%;
+    height: 100%;
+
+    &:last-child {
+      top: 0;
+      left: 50.5%;
+    }
+  }
+  .single-photos-slider__info {
+    padding: 3px 12px 6px 17px;
+  }
+  .single-photos-slider__price {
+    margin: 0 0 3px;
+  }
+  .single-photos-slider__author {
+    margin: 0 0 3px;
+  }
+}
+
+

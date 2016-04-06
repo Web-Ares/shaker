@@ -1,5 +1,5 @@
 /*---------- popup ----------*/
-$popup-back: rgba( 0, 0, 0, .5 );
+$popup-back: rgba( 0, 0, 0, .8 );
 $popup-close-back: rgba( 255, 255, 255, 1 );
 /*---------- /popup ---------*/
 
@@ -18,8 +18,8 @@ $nice-radio-color: #000;
 /*---------- nice-checkbox ----------*/
 $nice-checkbox-color1: #bababa;
 $nice-checkbox-color2: #5f5f5f;
-$nice-checkbox-back1: #5f5f5f;
-$nice-checkbox-back2: #bababa;
+$nice-checkbox-back1: #bababa;
+$nice-checkbox-back2: #5f5f5f;
 /*---------- /nice-checkbox ---------*/
 
 /*---------- btn ----------*/
@@ -28,20 +28,17 @@ $btn-back-hover: #8c8c8c;
 $btn-back-active: #000;
 $btn-color: #fff;
 $btn-color-active: #e0e0e0;
-
-$btn-2-back: #f00;
-$btn-2-back-hover: #f0a;
-$btn-2-back-active: #000;
-$btn-2-color-active: #f0a;
 /*---------- /btn ---------*/
 
 /*---------- site ---------*/
 $site-loading-back: #fff;
+$site-header-back: rgba(255,255,255,0.5);
 $site-header-user-color1: #bababa;
 $site-header-user-color2: #5f5f5f;
 $site-header-curation-color: #5f5f5f;
 $site-menu-btn-back1: #5f5f5f;
 $site-menu-btn-back2: #bababa;
+$site-menu-btn-back3: #000;
 $site-menu-nav-back: rgba(255,255,255,0.9);
 $site-menu-link-color: #000000;
 $site-menu-link-hover-color: #dfdfdf;
@@ -62,3 +59,32 @@ $language-color1: #fff;
 $language-color2: #6e6e6e;
 $language-hover-color1: #c7c7c7;
 /*---------- /language ---------*/
+
+/*---------- categories ---------*/
+$categories-set-item-back: #bababa;
+$categories-set-item-hover-back: #e7e7e7;
+$categories-set-item-active-back: #b7b7b7;
+$categories-set-item-hover-color: #000;
+$categories-set-item-active-color: #fff;
+$categories-btn-color: #bababa;
+$categories-drop-down-back: rgba(255,255,255,1);
+$categories-set-active-back: #b7b7b7;
+$categories-set-active-color: #fff;
+/*---------- /categories ---------*/
+
+/*---------- enter-form ---------*/
+$enter-form-forgot-color: #5d5d5d;
+/*---------- /enter-form ---------*/
+
+/*---------- single-photos-slider ---------*/
+$single-photos-slider-but-back: rgba(255,255,255,0.9);
+$single-photos-slider-info-back: rgba(255,255,255,0.8);
+$single-photos-slider-info-color: #000;
+$single-photos-slider-like-back1: rgba(255,255,255,0.5);
+$single-photos-slider-like-back2: rgba(255,255,255,1);
+$single-photos-slider-zoom-back1: rgba(255,255,255,0.5);
+$single-photos-slider-zoom-back2: rgba(255,255,255,1);
+$single-photos-slider-drop-back: #fff;
+$single-photos-slider-drop-back2: #ccc;
+$single-photos-slider-drop-color: #000;
+/*---------- /single-photos-slider ---------*/

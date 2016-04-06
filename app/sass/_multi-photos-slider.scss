@@ -1,0 +1,19 @@
+.multi-photos-slider {
+  height: 500px;
+}
+.multi-photos-slider.swiper-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .multi-photos-slider.swiper-container {
+    padding-bottom: 45px;
+  }
+
+}
+
+
+

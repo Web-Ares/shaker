@@ -26,7 +26,14 @@ var paths = {
         {
             dist: 'main.min.js',
             contains: [
-                'app/js/jquery.main.js'
+                'app/js/jquery.main.js',
+                'app/js/jquery.popup.js'
+            ]
+        },
+        {
+            dist: 'limited-art.min.js',
+            contains: [
+                'app/js/jquery.limited-art.js'
             ]
         },
         {

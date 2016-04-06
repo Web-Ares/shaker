@@ -1,0 +1,43 @@
+.art_curations .art__sliders {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.art_curations .single-photos-slider__like {
+  top: 116px;
+  left: 17px;
+}
+.art_curations .single-photos-slider__zoom {
+  top: 116px;
+  right: 17px;
+}
+.art_curations .art__items {
+  padding: 0 0 0 13px;
+  margin: -10px 0 0 0;
+}
+.art_curations .categories {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+
+@media (min-width: $tablet-portrait) {
+  .art_curations .categories {
+    padding: 0;
+    width: auto;
+  }
+  .art_curations .art__items {
+    margin: -81px 0 0 10px;
+    direction: rtl;
+  }
+  .art_curations .single-photos-slider__like {
+    top: 69px;
+    left: 25px;
+  }
+  .art_curations .single-photos-slider__zoom {
+    top: 69px;
+    right: 25px;
+  }
+}

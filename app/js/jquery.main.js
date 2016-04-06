@@ -1,6 +1,5 @@
 "use strict";
 ( function() {
-    sessionStorage.clear();
 
     $( function() {
 
@@ -54,7 +53,7 @@
             },
             _setHeight = function () {
 
-                if( _window.height() >= 600 ) {
+                if( _window.height() >= 550 ) {
 
                     _obj.css( {
 
@@ -66,7 +65,7 @@
 
                     _obj.css( {
 
-                        'min-height': '600px'
+                        'min-height': '550px'
 
                     } );
 
@@ -344,7 +343,7 @@
                 }
                 else {
                     _request.abort();
-                    $.ajax({
+                    _request = $.ajax({
                         url: _path,
                         dataType: 'html',
                         timeout: 20000,

@@ -43,8 +43,10 @@
                     onSlideChangeStart: function (swiper) {
                         if( swiper.slides.eq( swiper.activeIndex ).hasClass( 'home-slider__item_black' ) ){
                             $( '.logo').addClass( 'logo_index-black' );
+                            $( '.site__menu').addClass( 'site__menu_black' );
                         } else {
-                            $( '.logo').removeClass( 'logo_index-black' )
+                            $( '.logo').removeClass( 'logo_index-black' );
+                            $( '.site__menu').removeClass( 'site__menu_black' );
                         }
                     }
                 } );

@@ -1,0 +1,86 @@
+.categories {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  @include flexbox();
+  @include flex-direction();
+  @include justify-content( space-between );
+  @include align-items( flex-start );
+}
+.categories__set {
+  position: relative;
+  margin: 0 0 0 -4px;
+  padding: 0 5% 0 0;
+  text-align: left;
+  cursor: default;
+}
+.categories__set-item {
+  display: inline-block;
+  vertical-align: top;
+  padding: 2px 4px;
+  margin: 0 0 3px -1px;
+  border-radius: 3px;
+  color: $categories-set-item-back;
+  transition: background 0.2s linear, color 0.2s linear;
+
+  &:hover {
+    color: $categories-set-item-hover-color;
+    background: $categories-set-item-hover-back;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+.categories__set-item.active {
+  background: $categories-set-item-active-back;
+  color: $categories-set-item-active-color;
+}
+.categories__btn {
+  display: inline-block;
+  vertical-align: top;
+  padding: 2px 0;
+  color: $categories-btn-color;
+}
+.categories__set_minimize {
+  margin-left: 0;
+}
+.categories__set-drop-down {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 24px;
+  width: 200px;
+  padding: 10px;
+  max-height: 100px;
+  border-radius: 4px;
+  background: $categories-drop-down-back;
+}
+.categories__set-drop-down .categories__set-item {
+  display: block;
+}
+.categories__set-active {
+  display: inline-block;
+  vertical-align: top;
+  height: 19px;
+  margin: 0 0 0 4px;
+  background: url("../img/category-drop.png") no-repeat 93% center $categories-set-active-back;
+  background-size: 11px 9px;
+  color: $categories-set-active-color;
+  border-radius: 2px;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 2px 36px 2px 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.categories__set-active.opened + .categories__set-drop-down {
+  opacity: 1;
+  visibility: visible;
+}
+
+

@@ -30,25 +30,43 @@
 }
 .site__header {
   position: absolute;
+  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
-  height: 145px;
-  z-index: 3;
+  height: 60px;
+  background: $site-header-back;
 }
 .site__header_index {
   height: 100px;
+  background: transparent;
+}
+.site__header_non-pointer {
+  pointer-events: none;
+}
+.site__header_non-pointer > * {
+  pointer-events: all;
+}
+.site__header-items {
+  @include flexbox();
+  @include flex-direction( column-reverse );
+  @include justify-content ( flex-end );
+  @include align-items( flex-start );
+  position: absolute;
+  left: 100px;
+  top: 11px;
+  width: 53.6%;
 }
 .site__header-user {
-  position: absolute;
-  left: 27px;
-  top: 80px;
   font-size: 12px;
   line-height: 14px;
   @include main-font1();
   color: $site-header-user-color1;
 }
-.site__header-user span{
+.site__header-user span {
+  display: none;
+}
+.site__header-user .site__header-user-name{
   display: block;
   font-size: 15px;
   line-height: 18px;
@@ -56,9 +74,7 @@
   color: $site-header-user-color2;
 }
 .site__header-curations {
-  position: absolute;
-  left: 27px;
-  top: 120px;
+  width: 155px;
   padding: 0 0 0 23px;
   min-height: 15px;
   background: url("../img/personal-curation.png") no-repeat;
@@ -74,8 +90,8 @@
 }
 .site__menu {
   position: absolute;
-  top: 26px;
-  right: 23px;
+  top: 17px;
+  right: 10px;
 }
 .site__menu-btn {
   display: block;
@@ -178,6 +194,14 @@
     background: $site-menu-link-hover-color;
   }
 }
+.site__menu_black .site__menu-btn span {
+  background: $site-menu-btn-back3;
+
+  &:before,
+  &:after {
+    background: $site-menu-btn-back3;
+  }
+}
 .site__down-link {
   position: absolute;
   z-index: 1;
@@ -214,10 +238,13 @@
 .site__content {
   position: relative;
   z-index: 2;
-  padding: 170px 0 70px;
+  padding: 70px 0 0;
   font-size: 16px;
   line-height: 25px;
   color: $site-content-inner-color1;
+}
+.site__content_pad-bot {
+  padding-bottom: 70px;
 }
 .site__content p {
   margin: 0 0 30px;
@@ -255,7 +282,7 @@
   position: relative;
   max-width: 990px;
   width: 100%;
-  padding: 0 25px;
+  padding: 0 10px;
   margin: 0 auto;
 }
 .site__title {
@@ -290,6 +317,17 @@
   //background: #fff;
   //mix-blend-mode: lighten;
   //white-space: pre-line;
+}
+.site__title_3 {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 7px;
+  color: #5f5f5f;
+  font-size: 19px;
+  line-height: 21px;
+  @include main-font2();
+  text-transform: none;
+  letter-spacing: 0;
 }
 .site__content__inner {
   text-align: center;
@@ -326,15 +364,7 @@ textarea.site__area {
   height: 61px;
 }
 
-@media (min-width: $phone-landscape) {
-  .site {
-
-  }
-}
 @media (min-width: $tablet-portrait) {
-  .site {
-
-  }
   .site__down-link {
     height: 111px;
     padding: 16px 0 0;
@@ -357,31 +387,52 @@ textarea.site__area {
   }
   .site__header {
     height: 90px;
+    background: transparent;
   }
   .site__header_index {
     height: 160px;
   }
+  .site__header-items {
+    @include flex-direction( row );
+    @include justify-content( space-between );
+    @include align-items( flex-end );
+    left: 187px;
+    top: 27px;
+  }
   .site__header-user {
-    left: 188px;
-    top: 28px;
+    display: inline-block;
+    vertical-align: top;
     width: 190px;
     font-size: 15px;
     line-height: 17px;
   }
   .site__header-user span{
+    display: block;
+  }
+  .site__header-user .site__header-user-name{
     font-size: 20px;
     line-height: 23px;
   }
   .site__header-curations {
-    left: 49.4%;
-    top: 46px;
+    display: inline-block;
+    vertical-align: top;
     width: 230px;
     background-position: left 3px;
     font-size: 19px;
     line-height: 21px;
   }
+  .site__menu {
+    top: 26px;
+    right: 23px;
+  }
+  .site__center {
+    padding: 0 25px;
+  }
   .site__content {
-    padding: 110px 0;
+    padding: 98px 0 0;
+  }
+  .site__content_pad-bot {
+    padding-bottom: 110px;
   }
   .site__content_center {
     @include flexbox();
@@ -394,11 +445,13 @@ textarea.site__area {
     padding-left: 60px;
     padding-right: 60px;
   }
+  .site__title_3 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 0 5px;
+  }
 }
 @media (min-width: $tablet-landscape) {
-  .site {
-
-  }
   .site__title {
     font-size: 100px;
     line-height: 90px;
@@ -408,6 +461,10 @@ textarea.site__area {
     margin: 0 0 2px;
     font-size: 70px;
     line-height: 65px;
+  }
+  .site__title_3 {
+    font-size: 19px;
+    line-height: 21px;
   }
   .site__content {
     font-size: 20px;
@@ -431,11 +488,6 @@ textarea.site__area {
   .site__content-text {
     padding: 0 0 0 24px;
     margin: 0 0 29px;
-  }
-}
-@media (min-width: $desktop) {
-  .site {
-
   }
 }
 

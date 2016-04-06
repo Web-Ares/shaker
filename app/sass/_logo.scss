@@ -1,9 +1,9 @@
 .logo {
   position: absolute;
-  top: 25px;
-  left: 25px;
-  width: 104px;
-  height: 45px;
+  top: 12px;
+  left: 10px;
+  width: 77px;
+  height: 33px;
 }
 .logo_index {
   width: 101px;
@@ -31,6 +31,12 @@
 }
 
 @media (min-width: $tablet-portrait) {
+  .logo {
+    top: 25px;
+    left: 25px;
+    width: 104px;
+    height: 45px;
+  }
   .logo_index {
     width: 203px;
     height: 115px;
