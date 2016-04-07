@@ -135,6 +135,9 @@
   display: inline-block;
   vertical-align: top;
   cursor: pointer;
+  background: url("../img/category-drop-black.png") no-repeat left center;
+  background-size: 11px 9px;
+  padding-left: 17px;
 }
 .single-photos-slider__drop {
   display: none;

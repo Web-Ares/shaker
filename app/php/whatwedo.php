@@ -61,9 +61,9 @@
 
                     <!-- site__title -->
                     <h1 class="site__title">
-                                <span>What
-                                    We
-                                    do</span>
+                        What
+                            We
+                            do
                     </h1>
                     <!-- /site__title -->
 

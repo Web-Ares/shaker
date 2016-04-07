@@ -61,7 +61,7 @@
 
                     <!-- site__title -->
                     <h1 class="site__title">
-                        <span>Why Us</span>
+                        Why Us
                     </h1>
                     <!-- /site__title -->
 

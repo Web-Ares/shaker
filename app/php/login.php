@@ -61,7 +61,7 @@
 
                     <!-- site__title -->
                     <h1 class="site__title">
-                        <span>Log In</span>
+                        Log In
                     </h1>
                     <!-- /site__title -->
 

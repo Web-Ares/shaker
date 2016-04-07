@@ -155,7 +155,10 @@
             _content = $( '.site__layout' ),
             _dataScroll = _content.data( 'scroll' ),
             _body = $( 'body' ),
-            _loading = $( '.site__loading' );
+            _loading = $( '.site__loading'),
+            _fireEvent,
+            _oldDelta = null;
+
 
         var _addEvents = function () {
 
@@ -179,7 +182,7 @@
 
                 } );
 
-                window.addEventListener('popstate', function( e ) {
+                window.addEventListener( 'popstate', function( e ) {
 
                     var oldPath = _path;
 
@@ -220,31 +223,35 @@
                     },
                     scroll: function() {
                         _checkActionScroll( _body.find( '.site__layout' ) );
-                    },
-                    DOMMouseScroll: function( e ) {
 
-                        var delta = e.originalEvent.detail;
-
-                        if ( delta ) {
-                            var direction = ( delta > 0 ) ? 1 : -1;
-
-                            _checkScroll( direction );
-
-                        }
-
-                    },
-                    mousewheel: function( e ) {
-
-                        var delta = e.originalEvent.wheelDelta;
-
-                        if ( delta ) {
-                            var direction = ( delta > 0 ) ? -1 : 1;
-
-                            _checkScroll( direction );
-
-                        }
 
                     }
+                    //,
+                    //DOMMouseScroll: function( e ) {
+                    //
+                    //    var delta = e.originalEvent.detail;
+                    //
+                    //    if ( delta ) {
+                    //        var direction = ( delta > 0 ) ? 1 : -1;
+                    //
+                    //        _checkScroll( direction );
+                    //
+                    //    }
+                    //
+                    //}
+                    //,
+                    //mousewheel: function( e ) {
+                    //
+                    //    var delta = e.originalEvent.wheelDelta;
+                    //
+                    //    if ( delta ) {
+                    //        var direction = ( delta > 0 ) ? -1 : 1;
+                    //
+                    //        _checkScroll( direction );
+                    //
+                    //    }
+                    //
+                    //}
                     //touchmove: function( e ) {
                     //
                     //    _checkActionScroll( _body.find( '.site__layout' ) );
@@ -258,6 +265,57 @@
                     //    }
                     //}
                 } );
+
+                //var prevTime = new Date().getTime();
+                //var f = function(e){
+                //    var curTime = new Date().getTime();
+                //    if(typeof prevTime !== 'undefined'){
+                //        var timeDiff = curTime-prevTime;
+                //        if(timeDiff>50)
+                //            var delta = e.deltaY;
+                //
+                //        if ( delta ) {
+                //            var direction = ( delta > 0 ) ? 1 : -1;
+                //
+                //            _checkScroll( direction );
+                //
+                //        }
+                //    }
+                //    prevTime = curTime;
+                //};
+
+
+                window.addEventListener("wheel", function( e ) {
+
+                    wheelEvent( e );
+
+                } );
+
+            },
+            wheelEvent = function (e){
+
+                var newDelta = e.deltaY;
+
+                _fireEvent = EventCheck();
+                _oldDelta = newDelta;
+
+                function EventCheck(){
+                    if( _oldDelta == null ) return true;
+                    if( _oldDelta * newDelta < 0 ) return true;
+                    if( Math.abs( newDelta ) > Math.abs( _oldDelta ) ) return true;
+                    return false;
+                }
+
+                if( _fireEvent ) {
+                    var delta = e.deltaY;
+
+                    if ( delta ) {
+                        var direction = ( delta > 0 ) ? 1 : -1;
+
+                        _checkScroll( direction );
+
+                    }
+                }
 
             },
             _addContent = function( newWrapper ) {
@@ -274,7 +332,23 @@
                     newWrapper.removeClass( 'site__content_absolute' );
                     _dom.stop( true, false );
                     _dom.animate( { scrollTop: 0  }, 300 );
-                    new FullHeightScreen( newWrapper.find( '.full-height' ) ).setHeight();
+
+                    if( newWrapper.find( '.full-height').length ) {
+                        new FullHeightScreen( newWrapper.find( '.full-height' ) ).setHeight();
+                    }
+                    if( newWrapper.find( '.art').length ) {
+                        new CategoryChangeContent( newWrapper.find( '.art' ) );
+                    }
+                    if( newWrapper.find( '.popup').length ) {
+                        new Popup( newWrapper.find( '.popup' ) );
+                    }
+                    if( newWrapper.find( '.single-photos-slider__sizes').length ) {
+                        $.each( newWrapper.find( '.single-photos-slider__sizes'), function(){
+
+                            new DropDown ( $(this) )
+
+                        } );
+                    }
                     _loading.removeClass( 'show' );
 
                 }, 500 );
@@ -341,6 +415,9 @@
                         url: _path,
                         dataType: 'html',
                         timeout: 20000,
+                        data:{
+                            'ajax':true
+                        },
                         type: "GET",
                         success : function( content ) {
 
@@ -363,14 +440,15 @@
 
                                 _addContent( newWrapper );
 
-                            },200 );
+                            }, 200 );
+
                         },
                         error: function ( XMLHttpRequest ) {
                             if ( XMLHttpRequest.statusText != "abort" ) {
                                 alert( 'Error!' );
                             }
                         }
-                    });
+                    } );
                 }
                 return false;
 
@@ -412,6 +490,7 @@
                 } ) );
             },
             _init = function() {
+                sessionStorage.clear();
                 _obj[0].obj = _self;
                 _addEvents();
                 _checkAction();
