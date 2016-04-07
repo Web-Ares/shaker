@@ -514,7 +514,7 @@
                 ctx.textBaseline="top";
                 ctx.fillText( $( elem ).text().toUpperCase(), 0, 0 );
                 ctx.globalCompositeOperation = "source-in";
-                ctx.drawImage(_img, 0, 0, _img.width, _img.height, 0, 0, canvas.width, canvas.height);
+                ctx.drawImage(_img, 0, 0, _img.width , _img.height, 0, 0, 600, 600);
             },
             _redrawCanvas = function( elem, canvas ) {
 
