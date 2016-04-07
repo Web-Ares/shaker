@@ -60,9 +60,7 @@
                 <div class="site__content__row">
 
                     <!-- site__title -->
-                    <h1 class="site__title">
-                        Sign up
-                    </h1>
+                    <h1 class="site__title site_canvas">Sign up</h1>
                     <!-- /site__title -->
 
                     <!-- site__content-text -->

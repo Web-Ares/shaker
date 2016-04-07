@@ -289,11 +289,26 @@
   position: relative;
   margin: 0 0 20px;
   font-size: 40px;
-  line-height: 45px;
+  line-height: 40px;
   text-transform: uppercase;
   @include main-font7();
-  letter-spacing: -3px;
   color: $site-title-color1;
+}
+.site_canvas {
+  color: transparent;
+}
+.site_canvas span{
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: top;
+}
+.site_canvas span canvas {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .site__title_3 {
   position: relative;
@@ -301,7 +316,7 @@
   margin: 0 0 7px;
   color: $site-title-color2;
   font-size: 19px;
-  line-height: 21px;
+  line-height: 19px;
   @include main-font2();
   text-transform: none;
   letter-spacing: 0;
@@ -431,8 +446,11 @@ textarea.site__area {
 @media (min-width: $tablet-landscape) {
   .site__title {
     font-size: 100px;
-    line-height: 90px;
+    line-height: 100px;
     margin: 0 0 20px;
+  }
+  .site_canvas span canvas {
+    top: -9px;
   }
   .site__title_2 {
     margin: 0 0 2px;

@@ -60,9 +60,7 @@
                 <div class="contact-info">
 
                     <!-- site__title -->
-                    <h1 class="site__title">
-                        Contact
-                    </h1>
+                    <h1 class="site__title site_canvas">Contact</h1>
                     <!-- /site__title -->
 
                     <!-- contact-info__item -->
