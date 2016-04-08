@@ -236,12 +236,12 @@
 
                 window.addEventListener("wheel", function( e ) {
 
-                    wheelEvent( e );
+                    _wheelEvent( e );
 
                 } );
 
             },
-            wheelEvent = function (e){
+            _wheelEvent = function (e){
 
                 var newDelta = e.deltaY;
 
@@ -282,27 +282,31 @@
                     _dom.stop( true, false );
                     _dom.animate( { scrollTop: 0  }, 300 );
 
-                    if( newWrapper.find( '.full-height').length ) {
+                    if( newWrapper.find( '.full-height' ).length ) {
                         new FullHeightScreen( newWrapper.find( '.full-height' ) ).setHeight();
                     }
-                    if( newWrapper.find( '.art').length ) {
+                    if( newWrapper.find( '.art' ).length ) {
                         new CategoryChangeContent( newWrapper.find( '.art' ) );
                     }
-                    if( newWrapper.find( '.popup').length ) {
+                    if( newWrapper.find( '.popup' ).length ) {
                         new Popup( newWrapper.find( '.popup' ) );
                     }
-                    if( newWrapper.find( '.single-photos-slider__sizes').length ) {
-                        $.each( newWrapper.find( '.single-photos-slider__sizes'), function(){
+                    if( newWrapper.find( '.single-photos-slider__sizes' ).length ) {
+                        $.each( newWrapper.find( '.single-photos-slider__sizes' ), function(){
 
                             new DropDown ( $(this) )
 
                         } );
                     }
-                    if( newWrapper.find( '.site_canvas').length ) {
+                    if( newWrapper.find( '.site_canvas' ).length ) {
+
+
                         $.each( newWrapper.find( '.site_canvas'), function () {
 
-                            new TextureText( $(this) );
+                            new TextureText( $( this ) );
+
                             new TextureText( $( this ) ).drawText();
+
                         } );
 
                     }
@@ -463,9 +467,8 @@
         //private properties
         var _self = this,
             _obj = obj,
-            _window = $( window),
-            _img = document.createElement( 'img' );
-        _img.src = 'img/text_texture.gif';
+            _flag = true,
+            _window = $( window);
 
         //private methods
         var _addEvents = function() {
@@ -475,9 +478,16 @@
                         _splitText();
                     },
                     resize: function() {
-                        _obj.find( 'span' ).each( function() {
-                            _redrawCanvas( $( this ),  $( this ).find( 'canvas' ) )
-                        } );
+
+                        if( _window.width() >= 992 && _flag ) {
+                            _flag = false;
+                            _obj.find( 'span' ).each( function() {
+                                _redrawCanvas( $( this )[0],  $( this ).find( 'canvas' )[0] )
+                            } );
+                        } else  if( _window.width() < 992) {
+                            _flag = true;
+                        }
+
                     }
                 } );
             },
@@ -499,38 +509,53 @@
             _createCanvas = function ( elem ) {
 
                 var canvas = document.createElement( 'canvas'),
-                    ctx = canvas.getContext( '2d' );
+                    ctx = canvas.getContext( '2d'),
+                    img = document.createElement( 'img' );
 
                 canvas.width = $( elem ).width() * 2;
                 canvas.height = $( elem ).height() * 2;
 
-                _drawText( elem, canvas, ctx );
+                $( img ).on( 'load', function() {
+
+                    _drawText( elem, canvas, ctx, img );
+
+                } );
+
+                img.src = 'img/text_texture.gif';
 
                 $( elem ).append( $( canvas ).html( 'f' ) );
             },
-            _drawText = function( elem, canvas, ctx ) {
+            _drawText = function( elem, canvas, ctx, img ) {
                 ctx.font = "" + $( elem ).css( 'font-weight' )+" " + parseInt( $( elem ).css( 'font-size' ) ) * 2 + "px " + $( elem ).css( 'font-family' ) + "";
                 ctx.textAlign = 'left';
                 ctx.textBaseline="top";
                 ctx.fillText( $( elem ).text().toUpperCase(), 0, 0 );
                 ctx.globalCompositeOperation = "source-in";
-                ctx.drawImage(_img, 0, 0, _img.width , _img.height, 0, 0, canvas.width*2, canvas.height*2);
+                ctx.drawImage( img, 0, 0, img.width , img.height, 0, 0, canvas.width * 2, canvas.height * 2 );
             },
             _redrawCanvas = function( elem, canvas ) {
 
-                var ctx = canvas[0].getContext( '2d' );
+                var ctx = canvas.getContext( '2d'),
+                    img = document.createElement( 'img' );
 
-                ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
+                ctx.clearRect( 0, 0, canvas.width, canvas.height );
 
-                canvas[0].width = $( elem ).width() * 2;
-                canvas[0].height = $( elem ).height() * 2;
+                canvas.width = $( elem ).width() * 2;
+                canvas.height = $( elem ).height() * 2;
 
-                _drawText( elem, canvas[0], ctx )
+                $( img ).on( 'load', function() {
+
+                    _drawText( elem, canvas, ctx, img  )
+
+                } );
+
+                img.src = 'img/text_texture.gif';
 
             },
             _init = function() {
                 _obj[ 0 ].obj = _self;
                 _addEvents();
+
             };
 
         _self.drawText = function() {

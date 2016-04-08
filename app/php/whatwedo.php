@@ -75,7 +75,7 @@
                 </div>
                 <!-- /site__content__row -->
 
-                <p>To see the curated works from our artist log onto the <span>secure space</span></p>
+                <p>To see the curated works from our artist log onto the <a href="#" class="site__content-link">secure space</a></p>
 
             </div>
             <!-- /site__content__inner -->

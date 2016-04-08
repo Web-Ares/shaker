@@ -261,7 +261,7 @@ var CategoryChangeContent = function ( obj ) {
 
             _obj[0].obj = _self;
             _initSwiper( _multiSlider, _singleSlider );
-            _setHeight( _multiSlider );
+            _updateSlider( _multiSlider );
             _addEvents();
             if( _categoriesSet.hasClass( 'categories__set_minimize' ) ) {
                 _changeCategoryView();

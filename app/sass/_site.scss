@@ -278,6 +278,13 @@
   transform: translateY(0);
   opacity: 0;
 }
+.site__content-link {
+  color: $site-content-inner-color2;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 .site__center {
   position: relative;
   max-width: 990px;
