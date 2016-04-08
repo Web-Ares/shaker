@@ -155,7 +155,6 @@
             _actionClick = true,
             _actionScroll = false,
             _wrapper = null,
-            _lastPos = 0,
             _duration = 500,
             _dom = $( 'html, body' ),
             _content = $( '.site__layout' ),
@@ -241,7 +240,7 @@
                 } );
 
             },
-            _wheelEvent = function (e){
+            _wheelEvent = function ( e ) {
 
                 var newDelta = e.deltaY;
 

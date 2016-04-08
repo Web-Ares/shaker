@@ -34,11 +34,9 @@ var CategoryChangeContent = function ( obj ) {
         _flagRemove = false,
         _multiSlider = _obj.find( '.multi-photos-slider' ),
         _singleSlider = _obj.find( '.single-photos-slider' ),
-        _like = _singleSlider.find( '.single-photos-slider__like' ),
         _categories = _obj.find( '.categories' ),
         _categoriesSet = _obj.find( '.categories__set' ),
         _sliderWrap = _obj.find( '.art__sliders'),
-        _btn = _categories.find( '.categories__btn' ),
         _name = _categories.find( '.categories__name' ),
         _setWrap = _categories.find( '.categories__set'),
         _loading = $( '.site__loading' );
@@ -46,17 +44,15 @@ var CategoryChangeContent = function ( obj ) {
     //private methods
     var _addEvents = function() {
 
-            _btn.on( {
-                click: function() {
-                    var curItem = $( this ),
-                        curItemDataId = curItem.data( 'id' );
+            _categories.on( 'click', '.categories__btn', function() {
+                var curItem = $( this ),
+                    curItemDataId = curItem.data( 'id' );
 
-                    _loading.addClass( 'show' );
+                _loading.addClass( 'show' );
 
-                    _requestForCategoryContent( curItemDataId );
+                _requestForCategoryContent( curItemDataId );
 
-                    return false;
-                }
+                return false;
             } );
 
             _categories.on( 'click', '.categories__set-item', function() {
@@ -156,95 +152,11 @@ var CategoryChangeContent = function ( obj ) {
 
             if( dropMenuDivHeight > parseInt(maxHeight) ) {
                 dropMenu.niceScroll( {
-                    horizrailenabled: false
+                    horizrailenabled: false,
+                    autohidemode: "scroll",
+                    cursoropacitymin: 0
                 } );
             }
-        },
-        _addEventsAfterAjax = function() {
-
-            _categories.on( 'click', '.categories__btn', function() {
-                var curItem = $( this ),
-                    curItemDataId = curItem.data( 'id' );
-
-                _loading.addClass( 'show' );
-
-                _requestForCategoryContent( curItemDataId );
-
-                return false;
-            } );
-
-            _categories.on( 'click', '.categories__set-item', function() {
-
-                var curItem = $( this),
-                    curItemDataSlider = curItem.data( 'slider'),
-                    activeItemBtn = _obj.find( '.categories__set-active' );
-
-                if( !( curItem.hasClass( 'active' ) ) ) {
-                    _categories.find( '.categories__set-item' ).removeClass( 'active' );
-                    curItem.addClass( 'active' );
-                    _swiperMulti.slideTo( curItemDataSlider, 500 );
-                }
-
-                activeItemBtn.text( $( this ).text() );
-                activeItemBtn.removeClass( 'opened' );
-
-                return false;
-
-            } );
-
-            _window.on( {
-                resize: function () {
-                    _updateSlider( _obj.find( '.multi-photos-slider') );
-
-                    if( _window.width() < 768 && !( _categoriesSet.hasClass( 'categories__set_minimize' ) ) ) {
-                        _changeCategoryView();
-
-                    } else if( _window.width() >= 768 && !( _categoriesSet.hasClass( 'categories__set_minimize' ) ) ) {
-                        _resetStyleCategoryView();
-                    }
-                }
-            } );
-
-            _categories.on( 'click', '.categories__set-item', function() {
-
-                var curItem = $( this),
-                    curItemDataSlider = curItem.data( 'slider'),
-                    activeItemBtn = _obj.find( '.categories__set-active' );
-
-                if( !( curItem.hasClass( 'active' ) ) ) {
-                    _categories.find( '.categories__set-item' ).removeClass( 'active' );
-                    curItem.addClass( 'active' );
-                    _swiperMulti.slideTo( curItemDataSlider, 500 );
-                }
-
-                activeItemBtn.text( $( this ).text() );
-                activeItemBtn.removeClass( 'opened' );
-
-                return false;
-
-            } );
-
-            _like.on( {
-                click: function() {
-
-                    var curItem = $( this ),
-                        curItemDataId = curItem.data( 'id'),
-                        curItemClass = curItem.attr( 'class').split(' '),
-                        liked;
-
-                    for (var i = 0; i < curItemClass.length; i++) {
-
-                        if( curItemClass[i] == 'liked' ) {
-                            liked = curItemClass[i];
-                        }
-
-                    }
-                    _requestLikedPhoto( curItem, curItemDataId, liked );
-
-                    return false;
-                }
-            } );
-
         },
         _changeCategoryView = function() {
 
@@ -350,8 +262,6 @@ var CategoryChangeContent = function ( obj ) {
                         _initSwiper( _obj.find( '.multi-photos-slider'), _obj.find( '.single-photos-slider') );
                         _updateSlider( _obj.find( '.multi-photos-slider') );
                     }, 1 );
-
-                    _addEventsAfterAjax();
 
                     if( _window.width() < 768 && !( _categoriesSet.hasClass( 'categories__set_minimize' ) ) ) {
                         _changeCategoryView();

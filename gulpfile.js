@@ -39,8 +39,7 @@ var paths = {
         {
             dist: 'ui.min.js',
             contains: [
-                'app/js/jquery.popup.js',
-                'app/js/jquery.websters-select.js'
+                'app/js/jquery.popup.js'
             ]
         }
     ],
