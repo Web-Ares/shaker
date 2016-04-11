@@ -1,19 +1,19 @@
-( function(){
+( function() {
 
-    $( function(){
+    $( function() {
 
-        $( '.popup' ).each(function(){
+        $( '.popup' ).each(function() {
 
-            new Popup($(this));
+            new Popup( $( this ) );
 
-        });
+        } );
 
-    });
+    } );
 
 
 } )();
 
-var Popup = function( obj ){
+var Popup = function( obj ) {
 
     //private properties
     var _self = this,
@@ -26,17 +26,17 @@ var Popup = function( obj ){
         _contents = _obj.find( '.popup__content' ),
         _scrollConteiner = $( 'html' ),
         _window = $( window ),
-        _timer = setTimeout( function(){}, 1 );
+        _timer = setTimeout( function() {}, 1 );
 
     //private methods
-    var _centerWrap = function(){
+    var _centerWrap = function() {
             if ( _window.height() - ( _popupPadding * 2 ) - _wrap.height() > 0 ) {
                 _wrap.css( { top: ( ( _window.height() - ( _popupPadding * 2 ) ) - _wrap.height() ) / 2 } );
             } else {
                 _wrap.css( { top: 0 } );
             }
         },
-        _getScrollWidth = function (){
+        _getScrollWidth = function () {
             var scrollDiv = document.createElement( 'div'),
                 scrollBarWidth;
 
@@ -50,7 +50,7 @@ var Popup = function( obj ){
 
             return scrollBarWidth;
         },
-        _hide = function(){
+        _hide = function() {
             _obj.css( {
                 overflowY: 'hidden'
             } );
@@ -72,18 +72,18 @@ var Popup = function( obj ){
             }, 300 );
 
         },
-        _init = function(){
+        _init = function() {
             _obj[ 0 ].obj = _self;
             _onEvents();
         },
-        _onEvents = function(){
+        _onEvents = function() {
             _window.on( {
-                resize: function(){
+                resize: function() {
                     _centerWrap();
                 }
             } );
             _btnShow.on( {
-                click: function(){
+                click: function() {
                     _show( $( this ).attr( 'data-popup' ) );
 
                     if( $( this ).attr( 'data-popup' ) == 'lightbox' ) {
@@ -97,24 +97,24 @@ var Popup = function( obj ){
                 }
             } );
             _wrap.on( {
-                click: function( e ){
+                click: function( e ) {
                     e.stopPropagation();
                 }
             } );
             _obj.on( {
-                click: function(){
+                click: function() {
                     _hide();
                     return false;
                 }
             } );
             _btnClose.on( {
-                click: function(){
+                click: function() {
                     _hide();
                     return false;
                 }
             } );
         },
-        _show = function( className ){
+        _show = function( className ) {
             _setPopupContent( className );
 
             _scrollConteiner.css( {
@@ -125,7 +125,7 @@ var Popup = function( obj ){
             _centerWrap();
 
         },
-        _setPopupContent = function( className ){
+        _setPopupContent = function( className ) {
             var curContent = _contents.filter( '.popup__' + className );
 
             _contents.css( { display: 'none' } );

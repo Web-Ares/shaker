@@ -9,7 +9,7 @@
 
         } );
 
-        $.each( $( '.single-photos-slider__sizes' ), function(){
+        $.each( $( '.single-photos-slider__sizes' ), function() {
 
             new DropDown ( $(this) )
 
