@@ -94,7 +94,9 @@ var CategoryChangeContent = function ( obj ) {
             } );
 
             $.each( _obj, function() {
+
                 new LikedPhotos ( $( this ) );
+
             } );
 
             _body.on( {
@@ -441,55 +443,54 @@ var DropDown = function ( obj ) {
     _init();
 };
 
-var GalleryFull = function ( obj ) {
-
-    //private properties
-    var _self = this,
-        _obj = obj,
-        _singleSlider = _obj,
-        _window = $( window),
-        _windowHeight = $( window).height(),
-        _body = $( 'body'),
-        _swiperFull;
-
-    //private methods
-    var _addEvents = function() {
-
-        },
-        _init = function() {
-
-            _obj[0].obj = _self;
-            _initSwiper( _singleSlider );
-
-
-            //setTimeout( function() {
-            //    _updateSlider( _singleSlider );
-            //},100 );
-
-        },
-        _initSwiper = function( multi, single ) {
-
-            _swiperFull = new Swiper( single, {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                spaceBetween: 30
-            } );
-
-        },
-        _updateSlider = function() {
-            _swiperFull.update();
-        };
-    _init();
-
-};
+//var GalleryFull = function ( obj ) {
+//
+//    //private properties
+//    var _self = this,
+//        _obj = obj,
+//        _singleSlider = _obj,
+//        _window = $( window),
+//        _windowHeight = $( window).height(),
+//        _body = $( 'body'),
+//        _swiperFull;
+//
+//    //private methods
+//    var _addEvents = function() {
+//
+//        },
+//        _init = function() {
+//
+//            _obj[0].obj = _self;
+//            _initSwiper( _singleSlider );
+//
+//
+//            //setTimeout( function() {
+//            //    _updateSlider( _singleSlider );
+//            //},100 );
+//
+//        },
+//        _initSwiper = function( multi, single ) {
+//
+//            _swiperFull = new Swiper( single, {
+//                nextButton: '.swiper-button-next',
+//                prevButton: '.swiper-button-prev',
+//                spaceBetween: 30
+//            } );
+//
+//        },
+//        _updateSlider = function() {
+//            _swiperFull.update();
+//        };
+//    _init();
+//
+//};
 
 var LikedPhotos = function ( obj ) {
 
     //private properties
     var _self = this,
         _obj = obj,
-        _request = new XMLHttpRequest(),
-        _body = $( 'body');
+        _request = new XMLHttpRequest();
 
     //private methods
     var _addEvents = function() {

@@ -315,6 +315,10 @@
                     if( newWrapper.find( '.art' ).length ) {
                         new CategoryChangeContent( newWrapper.find( '.art' ) );
                     }
+                    if( newWrapper.find( '.gallery-full' ).length ) {
+                        new LikedPhotos ( newWrapper.find( '.gallery-full' ) );
+                    }
+
                 }, 600);
 
                 setTimeout( function() {

@@ -93,41 +93,7 @@ var Popup = function( obj ) {
                 click: function() {
                     _show( $( this ).attr( 'data-popup' ) );
 
-                    var activeElem = $( this ).parents( '.single-photos-slider__item' ).addClass( 'active' ),
-                        elemsSwiper = $( this ).parents( '.single-photos-slider' ).find( '.single-photos-slider__item'),
-                        elemsSwiperClones = elemsSwiper.clone();
-
-                    $.each( elemsSwiperClones, function() {
-
-                        var curElem = $( this),
-                            wrap = $( '<div class="swiper-slide"></div>' );
-
-                        curElem.find( '.single-photos-slider__zoom').remove();
-                        curElem.addClass( 'gallery-full__item swiper-slide' );
-                        wrap.append( curElem );
-
-                        $( '.gallery-full .swiper-wrapper' ).append( wrap );
-
-                    } );
-
-                    $.each( $( '.gallery-full' ).find( '.single-photos-slider__sizes' ), function(){
-
-                        new DropDown ( $(this) )
-
-                    } );
-                    _swiperFull = new Swiper( $( '.gallery-full' ), {
-                        nextButton: '.swiper-button-next',
-                        prevButton: '.swiper-button-prev',
-                        spaceBetween: 30,
-                        onSlideChangeEnd: function() {
-                            $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
-                        }
-                    } );
-
-                    setTimeout( function() {
-                        _swiperFull.slideTo( $( '.gallery-full' ).find( '.gallery-full__item.active').parent('.swiper-slide').index(), 1);
-
-                    }, 10);
+                    _initSwiper( $( this ) );
 
                     return false;
                 }
@@ -149,6 +115,44 @@ var Popup = function( obj ) {
                     return false;
                 }
             } );
+        },
+        _initSwiper = function( elem ) {
+
+            var activeElem = elem.parents( '.single-photos-slider__item' ).addClass( 'active' ),
+                elemsSwiper = elem.parents( '.single-photos-slider' ).find( '.single-photos-slider__item'),
+                elemsSwiperClones = elemsSwiper.clone();
+
+            $.each( elemsSwiperClones, function() {
+
+                var curElem = $( this),
+                    wrap = $( '<div class="swiper-slide"></div>' );
+
+                curElem.find( '.single-photos-slider__zoom').remove();
+                curElem.addClass( 'gallery-full__item swiper-slide' );
+                wrap.append( curElem );
+
+                $( '.gallery-full .swiper-wrapper' ).append( wrap );
+
+            } );
+
+            $.each( $( '.gallery-full' ).find( '.single-photos-slider__sizes' ), function(){
+
+                new DropDown ( $(this) )
+
+            } );
+            _swiperFull = new Swiper( $( '.gallery-full' ), {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30,
+                onSlideChangeEnd: function() {
+                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
+                }
+            } );
+
+            setTimeout( function() {
+                _swiperFull.slideTo( $( '.gallery-full' ).find( '.gallery-full__item.active').parent('.swiper-slide').index(), 1);
+
+            }, 10);
         },
         _show = function( className ) {
             _setPopupContent( className );
