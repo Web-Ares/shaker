@@ -20,12 +20,13 @@ var Popup = function( obj ) {
         _popupPadding = 40,
         _btnShow =  $( '.popup__open' ),
         _obj = obj,
-        _lightBoxPopup =  _obj.find( '.popup__lightbox' ),
         _btnClose = _obj.find( '.popup__close, .popup__cancel' ),
         _wrap = _obj.find( '.popup__wrap' ),
         _contents = _obj.find( '.popup__content' ),
         _scrollConteiner = $( 'html' ),
         _window = $( window ),
+        _swiperFull = null,
+        _body = $( 'body'),
         _timer = setTimeout( function() {}, 1 );
 
     //private methods
@@ -69,12 +70,18 @@ var Popup = function( obj ) {
                 });
 
                 _obj.removeClass( 'popup_hide' );
+
+                _body.find( '.single-photos-slider .single-photos-slider__item' ).removeClass( 'active' );
+                _body.find( '.gallery-full .swiper-wrapper' ).html( '' );
+                _swiperFull.destroy( false, true );
+
             }, 300 );
 
         },
         _init = function() {
             _obj[ 0 ].obj = _self;
             _onEvents();
+
         },
         _onEvents = function() {
             _window.on( {
@@ -86,13 +93,42 @@ var Popup = function( obj ) {
                 click: function() {
                     _show( $( this ).attr( 'data-popup' ) );
 
-                    if( $( this ).attr( 'data-popup' ) == 'lightbox' ) {
-                        var parent = $( this ).parent(),
-                            parentBg = parent.css( 'background-image' );
-                        _lightBoxPopup.css( {
-                            'background-image': parentBg
-                        } );
-                    }
+                    var activeElem = $( this ).parents( '.single-photos-slider__item' ).addClass( 'active' ),
+                        elemsSwiper = $( this ).parents( '.single-photos-slider' ).find( '.single-photos-slider__item'),
+                        elemsSwiperClones = elemsSwiper.clone();
+
+                    $.each( elemsSwiperClones, function() {
+
+                        var curElem = $( this),
+                            wrap = $( '<div class="swiper-slide"></div>' );
+
+                        curElem.find( '.single-photos-slider__zoom').remove();
+                        curElem.addClass( 'gallery-full__item swiper-slide' );
+                        wrap.append( curElem );
+
+                        $( '.gallery-full .swiper-wrapper' ).append( wrap );
+
+                    } );
+
+                    $.each( $( '.gallery-full' ).find( '.single-photos-slider__sizes' ), function(){
+
+                        new DropDown ( $(this) )
+
+                    } );
+                    _swiperFull = new Swiper( $( '.gallery-full' ), {
+                        nextButton: '.swiper-button-next',
+                        prevButton: '.swiper-button-prev',
+                        spaceBetween: 30,
+                        onSlideChangeEnd: function() {
+                            $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
+                        }
+                    } );
+
+                    setTimeout( function() {
+                        _swiperFull.slideTo( $( '.gallery-full' ).find( '.gallery-full__item.active').parent('.swiper-slide').index(), 1);
+
+                    }, 10);
+
                     return false;
                 }
             } );
@@ -139,23 +175,13 @@ var Popup = function( obj ) {
     _self.show = function( elem ) {
 
         elem.on( {
-            click: function() {
+            click: function(){
                 _show( $( this ).attr( 'data-popup' ) );
-
-                if( $( this ).attr( 'data-popup' ) == 'lightbox' ) {
-                    var parent = $( this ).parent(),
-                        parentBg = parent.css( 'background-image' );
-                    _lightBoxPopup.css( {
-                        'background-image': parentBg
-                    } );
-                }
-
                 return false;
             }
         } );
 
     };
-
 
     _init();
 };

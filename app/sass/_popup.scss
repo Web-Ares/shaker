@@ -8,7 +8,6 @@
   width: 0;
   height: 0;
   z-index: 10000;
-  padding: 25px;
   background: $popup-back;
   text-align: center;
   transition: opacity 500ms ease-in-out;
@@ -36,7 +35,6 @@
 .popup__content {
   display: none;
   text-align: left;
-  padding: 20px 0;
 }
 
 .popup__close {
@@ -44,14 +42,17 @@
   top: 0;
   width: 45px;
   height: 45px;
+  z-index: 12;
   right: 0;
   text-indent: -5000px;
   cursor: pointer;
+  background: #000000;
+  border-radius: 3px;
 
   &:after,
   &:before {
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 0;
     right: 0;
     height: 3px;

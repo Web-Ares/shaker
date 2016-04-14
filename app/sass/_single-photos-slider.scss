@@ -100,10 +100,6 @@
   background-color: $single-photos-slider-like-back1;
   text-indent: -9999px;
   transition: background 0.2s linear;
-
-  &:hover {
-    background-color: $single-photos-slider-like-back2;
-  }
 }
 .single-photos-slider__like.liked {
   background-color: $single-photos-slider-like-back2;

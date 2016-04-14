@@ -154,6 +154,7 @@
             _path = null,
             _actionClick = true,
             _actionScroll = false,
+            _flag = true,
             _wrapper = null,
             _duration = 500,
             _dom = $( 'html, body' ),
@@ -199,13 +200,13 @@
                         var newWrapper = $(JSON.parse( sessionStorage.getItem( 'index' ) ).content);
                         newWrapper.addClass( 'site__content_absolute' );
 
-                        _loading.addClass( 'show' );
+                        //_loading.addClass( 'show' );
 
                         setTimeout( function() {
 
                             _addContent( newWrapper );
 
-                        },200 );
+                        },10 );
 
 
                     } else {
@@ -225,11 +226,6 @@
                 _window.on( {
                     resize: function() {
                         _checkActionScroll( _body.find( '.site__layout' ) );
-                    },
-                    scroll: function() {
-                        _checkActionScroll( _body.find( '.site__layout' ) );
-
-
                     }
                 } );
 
@@ -262,6 +258,9 @@
 
                         _checkScroll( direction );
 
+                        if( _flag ) {
+                            _checkActionScroll( _body.find( '.site__layout' ) );
+                        }
                     }
                 }
 
@@ -272,20 +271,18 @@
 
                 _wrapper.addClass( 'site__content_top' );
                 _obj.append( newWrapper );
-                newWrapper.addClass( 'site__content_from-bottom' );
+
 
                 setTimeout( function() {
-
+                    newWrapper.addClass( 'site__content_from-bottom' );
                     newWrapper.removeClass( 'site__content_from-bottom' );
                     newWrapper.removeClass( 'site__content_absolute' );
+
                     _dom.stop( true, false );
                     _dom.animate( { scrollTop: 0  }, 300 );
 
                     if( newWrapper.find( '.full-height' ).length ) {
                         new FullHeightScreen( newWrapper.find( '.full-height' ) ).setHeight();
-                    }
-                    if( newWrapper.find( '.art' ).length ) {
-                        new CategoryChangeContent( newWrapper.find( '.art' ) );
                     }
                     if( newWrapper.find( '.popup' ).length ) {
                         new Popup( newWrapper.find( '.popup' ) );
@@ -310,12 +307,19 @@
 
                     }
 
-                    _loading.removeClass( 'show' );
+                    //_loading.removeClass( 'show' );
 
-                }, 500 );
+                }, 300 );
+
+                setTimeout( function() {
+                    if( newWrapper.find( '.art' ).length ) {
+                        new CategoryChangeContent( newWrapper.find( '.art' ) );
+                    }
+                }, 600);
 
                 setTimeout( function() {
                     _actionClick = true;
+                    _flag = true;
                     _checkActionScroll( _body.find( '.site__layout' ) );
                 }, 1000 );
 
@@ -327,6 +331,10 @@
 
             },
             _requestForContent = function() {
+
+                _actionClick = false;
+                _actionScroll = false;
+                _flag = false;
 
                 var hasStorage = ( 'sessionStorage' in window && window.sessionStorage ),
                     path = /[^/]*$/.exec( _path )[ 0 ],
@@ -361,13 +369,13 @@
                     var newWrapper = $( data.content );
                     newWrapper.addClass( 'site__content_absolute' );
 
-                    _loading.addClass( 'show' );
+                    //_loading.addClass( 'show' );
 
                     setTimeout( function() {
 
                         _addContent( newWrapper );
 
-                    },200 );
+                    }, 10 );
 
                 }
                 else {
@@ -395,13 +403,13 @@
                             var newWrapper = $( content );
                             newWrapper.addClass( 'site__content_absolute' );
 
-                            _loading.addClass( 'show' );
+                            //_loading.addClass( 'show' );
 
                             setTimeout( function() {
 
                                 _addContent( newWrapper );
 
-                            }, 200 );
+                            }, 10 );
 
                         },
                         error: function ( XMLHttpRequest ) {
@@ -422,8 +430,6 @@
             },
             _changeContent = function( elem, elemParent ) {
 
-                _actionClick = false;
-                _actionScroll = false;
                 _path = elem.data( 'href' );
                 _wrapper = elemParent;
 
@@ -440,7 +446,6 @@
 
                 if( direction > 0 && _actionScroll ){
                     _changeContent( _body.find( '.site__layout' ), _body.find( '.site__layout' ) );
-
                 }
 
             },

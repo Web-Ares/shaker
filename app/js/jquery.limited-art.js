@@ -9,6 +9,12 @@
 
         } );
 
+        $.each( $( '.gallery-full' ), function() {
+
+            new LikedPhotos ( $( this ) );
+
+        } );
+
         $.each( $( '.single-photos-slider__sizes' ), function() {
 
             new DropDown ( $(this) )
@@ -74,9 +80,41 @@ var CategoryChangeContent = function ( obj ) {
 
             } );
 
+            _categoriesSet.on( 'click', '.categories__set-active', function() {
+                var curItem = $( this );
+
+                if( !( curItem.hasClass( 'opened' ) ) ) {
+                    curItem.addClass( 'opened' );
+                    _addNiceScroll( _categoriesSet.find( '.categories__set-drop-down' ) );
+                } else {
+                    curItem.removeClass( 'opened' );
+                }
+
+                return false;
+            } );
+
+            $.each( _obj, function() {
+                new LikedPhotos ( $( this ) );
+            } );
+
+            _body.on( {
+                click: function() {
+                    var curItem = _categoriesSet.find( '.categories__set-active' );
+
+                    if( curItem.hasClass( 'opened' ) ) {
+
+                        curItem.removeClass( 'opened' );
+                    }
+
+                    _body.find( '.single-photos-slider__sizes-selected' ).removeClass( 'active' );
+                }
+            } );
+
             _window.on( {
                 resize: function () {
                     _updateSlider( _multiSlider );
+
+                    _body.find( '.single-photos-slider__sizes-selected' ).removeClass( 'active' );
 
                     if( _window.width() < 768 && !( _categoriesSet.hasClass( 'categories__set_minimize' ) ) ) {
                         _changeCategoryView();
@@ -99,48 +137,6 @@ var CategoryChangeContent = function ( obj ) {
                         _changeCategoryView();
                     }
                 }
-            } );
-
-            _obj.on( 'click', '.single-photos-slider__like', function() {
-                var curItem = $( this ),
-                    curItemDataId = curItem.data( 'id'),
-                    curItemClass = curItem.attr( 'class').split(' '),
-                    liked;
-
-                for (var i = 0; i < curItemClass.length; i++) {
-
-                    if( curItemClass[i] == 'liked' ) {
-                        liked = curItemClass[i];
-                    }
-
-                }
-                _requestLikedPhoto( curItem, curItemDataId, liked );
-
-                return false;
-            } );
-
-            _body.on( {
-                click: function() {
-                    var curItem = _categoriesSet.find( '.categories__set-active' );
-
-                    if( curItem.hasClass( 'opened' ) ) {
-
-                        curItem.removeClass( 'opened' );
-                    }
-                }
-            } );
-
-            _categoriesSet.on( 'click', '.categories__set-active', function() {
-                var curItem = $( this );
-
-                if( !( curItem.hasClass( 'opened' ) ) ) {
-                    curItem.addClass( 'opened' );
-                    _addNiceScroll( _categoriesSet.find( '.categories__set-drop-down' ) );
-                } else {
-                    curItem.removeClass( 'opened' );
-                }
-
-                return false;
             } );
 
         },
@@ -173,8 +169,16 @@ var CategoryChangeContent = function ( obj ) {
 
             _obj[0].obj = _self;
             _initSwiper( _multiSlider, _singleSlider );
-            _updateSlider( _multiSlider );
+
+            _multiSlider.css( {
+                opacity: 1
+            } );
+            setTimeout( function() {
+                _updateSlider( _multiSlider );
+            },100 );
+
             _addEvents();
+
             if( _categoriesSet.hasClass( 'categories__set_minimize' ) ) {
                 _changeCategoryView();
             }
@@ -258,6 +262,10 @@ var CategoryChangeContent = function ( obj ) {
 
                     _sliderWrap.append( $( content ) );
 
+                    _obj.find( '.multi-photos-slider').css( {
+                        opacity: 1
+                    } );
+
                     setTimeout( function() {
                         _initSwiper( _obj.find( '.multi-photos-slider'), _obj.find( '.single-photos-slider') );
                         _updateSlider( _obj.find( '.multi-photos-slider') );
@@ -279,33 +287,6 @@ var CategoryChangeContent = function ( obj ) {
                     setTimeout( function() {
                         _loading.removeClass( 'show' );
                     }, 500 );
-
-                },
-                error: function ( XMLHttpRequest ) {
-                    if ( XMLHttpRequest.statusText != "abort" ) {
-                        alert( 'Error!' );
-                    }
-                }
-            } );
-        },
-        _requestLikedPhoto = function( elem, data, dataClass ) {
-            _request.abort();
-            _request = $.ajax( {
-                url: elem.data( 'action' ),
-                dataType: 'json',
-                timeout: 20000,
-                data: {
-                    'data-id':  data ,
-                    'class':    dataClass
-                },
-                type: "GET",
-                success : function( content ) {
-
-                    if( !content.like ) {
-                        elem.addClass( 'liked' )
-                    } else {
-                        elem.removeClass( 'liked' )
-                    }
 
                 },
                 error: function ( XMLHttpRequest ) {
@@ -337,6 +318,7 @@ var CategoryChangeContent = function ( obj ) {
             _setHeight( multi );
             _swiperMulti.update();
         };
+
     _init();
 
 };
@@ -390,16 +372,6 @@ var DropDown = function ( obj ) {
                     return false;
                 }
             } );
-            _window.on( {
-                resize: function() {
-                    _btn.removeClass( 'active' );
-                }
-            } );
-            _body.on( {
-                click: function() {
-                    _btn.removeClass( 'active' );
-                }
-            } )
 
         },
         _changeActive = function( elem ) {
@@ -467,6 +439,120 @@ var DropDown = function ( obj ) {
     };
 
     _init();
+};
+
+var GalleryFull = function ( obj ) {
+
+    //private properties
+    var _self = this,
+        _obj = obj,
+        _singleSlider = _obj,
+        _window = $( window),
+        _windowHeight = $( window).height(),
+        _body = $( 'body'),
+        _swiperFull;
+
+    //private methods
+    var _addEvents = function() {
+
+        },
+        _init = function() {
+
+            _obj[0].obj = _self;
+            _initSwiper( _singleSlider );
+
+
+            //setTimeout( function() {
+            //    _updateSlider( _singleSlider );
+            //},100 );
+
+        },
+        _initSwiper = function( multi, single ) {
+
+            _swiperFull = new Swiper( single, {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30
+            } );
+
+        },
+        _updateSlider = function() {
+            _swiperFull.update();
+        };
+    _init();
+
+};
+
+var LikedPhotos = function ( obj ) {
+
+    //private properties
+    var _self = this,
+        _obj = obj,
+        _request = new XMLHttpRequest(),
+        _body = $( 'body');
+
+    //private methods
+    var _addEvents = function() {
+
+            _obj.on( 'click', '.single-photos-slider__like', function() {
+                var curItem = $( this ),
+                    curItemDataId = curItem.data( 'id'),
+                    curItemClass = curItem.attr( 'class').split(' '),
+                    liked;
+
+                for (var i = 0; i < curItemClass.length; i++) {
+
+                    if( curItemClass[i] == 'liked' ) {
+                        liked = curItemClass[i];
+                    }
+
+                }
+
+                if( _obj.hasClass( 'gallery-full' ) ) {
+                    $( '.art').find( '.single-photos-slider__like').filter( '[data-id=' + curItemDataId + ']').trigger( 'click' )
+                }
+
+                _requestLikedPhoto( curItem, curItemDataId, liked );
+
+                return false;
+
+            } );
+
+        },
+        _init = function() {
+
+            _obj[0].obj = _self;
+            _addEvents();
+        },
+        _requestLikedPhoto = function( elem, data, dataClass ) {
+            _request.abort();
+            _request = $.ajax( {
+                url: elem.data( 'action' ),
+                dataType: 'json',
+                timeout: 20000,
+                data: {
+                    'data-id':  data ,
+                    'class':    dataClass
+                },
+                type: "GET",
+                success : function( content ) {
+
+                    if( !content.like ) {
+                        elem.addClass( 'liked' )
+                    } else {
+                        elem.removeClass( 'liked' )
+                    }
+
+                },
+                error: function ( XMLHttpRequest ) {
+                    if ( XMLHttpRequest.statusText != "abort" ) {
+                        alert( 'Error!' );
+                    }
+                }
+            } );
+        };
+    _init();
+
 };
 
 

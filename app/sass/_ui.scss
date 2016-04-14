@@ -29,16 +29,31 @@
     margin-bottom: 10px;
 
     > div {
-      display: inline-block;
-      vertical-align: top;
       padding: 0 5px;
     }
   }
 
 
   //fonts
-  &__myriadpro-regular {
-    @include main-font1
+  &__oxygen-light {
+    @include main-font1();
   }
-
+  &__oxygen-regular {
+    @include main-font2();
+  }
+  &__oxygen-bold {
+    @include main-font3();
+  }
+  &__roboto-light {
+    @include main-font4();
+  }
+  &__roboto-regular {
+    @include main-font5();
+  }
+  &__roboto-bold {
+    @include main-font6();
+  }
+  &__roboto-black {
+    @include main-font7();
+  }
 }

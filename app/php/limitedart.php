@@ -199,7 +199,7 @@
                                         <div class='swiper-slide'>
 
                                             <!-- single-photos-slider__item -->
-                                            <div class='single-photos-slider__item'  style='background-image: url(pic/lim-art-slide1.jpg)'>
+                                            <div class='single-photos-slider__item'  style='background-image: url(pic/index-slide1.jpg)'>
 
                                                 <a href='#' class='single-photos-slider__like liked' data-action='php/like.php' data-id='3'>like</a>
 
@@ -249,7 +249,7 @@
                                         <div class='swiper-slide'>
 
                                             <!-- single-photos-slider__item -->
-                                            <div class='single-photos-slider__item' style='background-image: url(pic/lim-art-slide1.jpg)'>
+                                            <div class='single-photos-slider__item' style='background-image: url(pic/index-slide2.jpg)'>
 
                                                 <a href='#' class='single-photos-slider__like' data-action='php/like.php' data-id='4'>like</a>
 
@@ -2115,6 +2115,14 @@
                 <!-- popup__close -->
                 <div class="popup__close"></div>
                 <!-- /popup__close -->
+
+                <div class="gallery-full swiper-container">
+                    <div class="swiper-wrapper">
+
+                    </div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                </div>
 
             </div>
             <!-- /popup__content -->

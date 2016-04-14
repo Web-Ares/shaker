@@ -1,5 +1,10 @@
 .multi-photos-slider {
+  opacity: 0;
   height: 500px;
+  transition: opacity 0.3s ease 0.3s;
+}
+.multi-photos-slider.visible {
+  opacity: 1;
 }
 .multi-photos-slider.swiper-container {
   width: 100%;
