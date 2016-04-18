@@ -160,11 +160,11 @@
             _dom = $( 'html, body' ),
             _content = $( '.site__layout' ),
             _dataScroll = _content.data( 'scroll' ),
+            _dataIndex = _content.hasClass('site_index'),
             _body = $( 'body' ),
             _loading = $( '.site__loading'),
             _fireEvent,
             _oldDelta = null;
-
 
         var _addEvents = function () {
 
@@ -268,10 +268,16 @@
             _addContent = function( newWrapper ) {
 
                 _dataScroll = newWrapper.data( 'scroll' );
+                _dataIndex = newWrapper.hasClass('site_index');
 
                 _wrapper.addClass( 'site__content_top' );
                 _obj.append( newWrapper );
 
+                if( _dataIndex ) {
+                    $( '.site__header' ).addClass( 'site__header_index' )
+                } else {
+                    $( '.site__header' ).removeClass( 'site__header_index' )
+                }
 
                 setTimeout( function() {
                     newWrapper.addClass( 'site__content_from-bottom' );
@@ -291,6 +297,13 @@
                         $.each( newWrapper.find( '.single-photos-slider__sizes' ), function(){
 
                             new DropDown ( $(this) )
+
+                        } );
+                    }
+                    if( newWrapper.find( '.single-photos-slider__zoom' ).length ) {
+                        $.each( newWrapper.find( '.single-photos-slider__zoom' ), function(){
+
+                            new GalleryFull ( $(this) )
 
                         } );
                     }
@@ -329,9 +342,7 @@
 
                 setTimeout( function() {
                     _wrapper.remove();
-                    new Menu( newWrapper.find( '.site__menu' ) ).addEvents();
                 }, _duration );
-
 
             },
             _requestForContent = function() {
@@ -454,10 +465,15 @@
 
             },
             _writeIndexBlockToSessionStorage = function() {
+                var content = _obj.clone();
+
+                content.find('.site__header').remove();
+
                 sessionStorage.setItem( 'index', JSON.stringify( {
                     timestamp: new Date(),
-                    content: _obj.html()
+                    content: content.html()
                 } ) );
+
             },
             _init = function() {
                 sessionStorage.clear();
@@ -465,6 +481,12 @@
                 _addEvents();
                 _checkAction();
                 _writeIndexBlockToSessionStorage();
+
+                if( _dataIndex && !( $( '.site__header').hasClass( 'site__header_index' ) )) {
+                    $( '.site__header' ).addClass( 'site__header_index' )
+                } else if( !_dataIndex ) {
+                    $( '.site__header' ).removeClass( 'site__header_index' )
+                }
             };
 
         _init();

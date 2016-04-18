@@ -5,7 +5,7 @@
   width: 77px;
   height: 33px;
 }
-.logo_index {
+.site__header_index .logo {
   width: 101px;
   height: 57px;
 }
@@ -17,10 +17,10 @@
 .logo .logo__inner {
   display: block;
 }
-.logo_index .logo__inner {
+.site__header_index .logo .logo__inner {
   display: none;
 }
-.logo_index .logo__index {
+.site__header_index .logo .logo__index {
   display: block;
 }
 .logo_index-black .logo__index-black {
@@ -37,7 +37,7 @@
     width: 104px;
     height: 45px;
   }
-  .logo_index {
+  .site__header_index .logo {
     width: 203px;
     height: 115px;
   }

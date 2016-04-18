@@ -21,6 +21,12 @@
 
         } );
 
+        $.each( $( '.single-photos-slider__zoom' ), function() {
+
+            new GalleryFull ( $(this) )
+
+        } );
+
     } );
 
 } )();
@@ -285,6 +291,7 @@ var CategoryChangeContent = function ( obj ) {
                     } );
 
                     new Popup ( $( '.popup' ) ).show( _obj.find( '.single-photos-slider__zoom' ) );
+                    new GalleryFull ( $( '.art' ) ).createSlider( _obj.find( '.single-photos-slider__zoom' ) );
 
                     setTimeout( function() {
                         _loading.removeClass( 'show' );
@@ -345,6 +352,8 @@ var DropDown = function ( obj ) {
 
                     _changeActive( $( this ) );
 
+                    $('.opened-lightbox').find('.single-photos-slider__item').filter('active').index('.opened-lightbox')
+
                 }
             } );
             _obj.on( {
@@ -362,6 +371,7 @@ var DropDown = function ( obj ) {
                 click: function() {
 
                     var curElem = $( this ),
+                        curItemIndex =  curElem.index(),
                         curElemText = curElem.text(),
                         mainTextWrap = curElem.parents( '.single-photos-slider__sizes' ).find( '.single-photos-slider__sizes-selected' );
 
@@ -370,6 +380,10 @@ var DropDown = function ( obj ) {
                     curElem.addClass( 'active' );
                     mainTextWrap.text( curElemText );
                     _setCount( curElem.index() + 1 );
+
+                    if( _obj.parents().hasClass( 'gallery-full' ) ) {
+                        $( '.art').find( '.single-photos-slider__item.active' ).find( '.single-photos-slider__drop a').eq( curItemIndex ).trigger( 'click' );
+                    }
 
                     return false;
                 }
@@ -443,47 +457,118 @@ var DropDown = function ( obj ) {
     _init();
 };
 
-//var GalleryFull = function ( obj ) {
-//
-//    //private properties
-//    var _self = this,
-//        _obj = obj,
-//        _singleSlider = _obj,
-//        _window = $( window),
-//        _windowHeight = $( window).height(),
-//        _body = $( 'body'),
-//        _swiperFull;
-//
-//    //private methods
-//    var _addEvents = function() {
-//
-//        },
-//        _init = function() {
-//
-//            _obj[0].obj = _self;
-//            _initSwiper( _singleSlider );
-//
-//
-//            //setTimeout( function() {
-//            //    _updateSlider( _singleSlider );
-//            //},100 );
-//
-//        },
-//        _initSwiper = function( multi, single ) {
-//
-//            _swiperFull = new Swiper( single, {
-//                nextButton: '.swiper-button-next',
-//                prevButton: '.swiper-button-prev',
-//                spaceBetween: 30
-//            } );
-//
-//        },
-//        _updateSlider = function() {
-//            _swiperFull.update();
-//        };
-//    _init();
-//
-//};
+var GalleryFull = function ( obj ) {
+
+    //private properties
+    var _self = this,
+        _obj = obj,
+        _btn = _obj.find( '.single-photos-slider__zoom' ),
+        _singleSlider = $( '.gallery-full' ),
+        _btnClose = $( '.popup' ).find( '.popup__close, .popup__cancel' ),
+        _swiperFull = null,
+        _body = $( 'body');
+
+    //private methods
+    var _addEvents = function() {
+
+            _btnClose.on( {
+                click: function() {
+
+                    setTimeout( function(){
+
+                        $( '.gallery-full')[0].swiper.destroy( false, true );
+
+                        _body.find( '.single-photos-slider .single-photos-slider__item' ).removeClass( 'active' );
+                        _body.find( '.single-photos-slider' ).removeClass( 'opened-lightbox' );
+                        _body.find( '.gallery-full .swiper-wrapper' ).html( '' );
+                        _swiperFull = null;
+
+                    }, 300 );
+
+                }
+            } );
+
+            _obj.on( {
+                click: function() {
+
+                    var curItem = $( this );
+
+                    _createSlider( curItem );
+
+                }
+            } )
+
+        },
+        _init = function() {
+
+            _obj[0].obj = _self;
+            _addEvents();
+
+        },
+        _createSlider = function( elem ) {
+
+            var activeElem = elem.parents( '.single-photos-slider__item' ).addClass( 'active' ),
+                elemsSwiper = elem.parents( '.single-photos-slider' ).find( '.single-photos-slider__item'),
+                elemsSwiperClones = elemsSwiper.clone();
+
+            activeElem.parents( '.single-photos-slider' ).addClass( 'opened-lightbox' );
+
+            $.each( elemsSwiperClones, function() {
+
+                var curElem = $( this),
+                    wrap = $( '<div class="swiper-slide"></div>' );
+
+                curElem.find( '.single-photos-slider__zoom').remove();
+                curElem.addClass( 'gallery-full__item' );
+                wrap.append( curElem );
+
+                $( '.gallery-full .swiper-wrapper' ).append( wrap );
+
+            } );
+
+            $.each( _singleSlider.find( '.single-photos-slider__sizes' ), function(){
+
+                new DropDown ( $(this) )
+
+            } );
+
+            setTimeout( function() {
+
+                _initSwiper();
+
+            }, 10 );
+
+
+
+        },
+        _initSwiper = function() {
+
+
+            _swiperFull = new Swiper( _singleSlider, {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30,
+                onSlideChangeEnd: function() {
+                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
+                }
+            } );
+
+            setTimeout( function() {
+                _swiperFull.slideTo( _singleSlider.find( '.gallery-full__item.active').parent('.swiper-slide').index(), 1);
+            }, 10);
+
+        };
+    _init();
+
+    _self.createSlider = function( elem ) {
+        elem.on( 'click', function() {
+
+            _createSlider( $( this ) );
+
+        } );
+    }
+
+};
 
 var LikedPhotos = function ( obj ) {
 

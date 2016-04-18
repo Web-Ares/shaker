@@ -25,8 +25,7 @@ var Popup = function( obj ) {
         _contents = _obj.find( '.popup__content' ),
         _scrollConteiner = $( 'html' ),
         _window = $( window ),
-        _swiperFull = null,
-        _body = $( 'body'),
+        _header = $( '.site__header' ),
         _timer = setTimeout( function() {}, 1 );
 
     //private methods
@@ -69,11 +68,11 @@ var Popup = function( obj ) {
                     overflowY: 'auto'
                 });
 
-                _obj.removeClass( 'popup_hide' );
+                _header.css ({
+                    'z-index': 3
+                });
 
-                _body.find( '.single-photos-slider .single-photos-slider__item' ).removeClass( 'active' );
-                _body.find( '.gallery-full .swiper-wrapper' ).html( '' );
-                _swiperFull.destroy( false, true );
+                _obj.removeClass( 'popup_hide' );
 
             }, 300 );
 
@@ -92,8 +91,6 @@ var Popup = function( obj ) {
             _btnShow.on( {
                 click: function() {
                     _show( $( this ).attr( 'data-popup' ) );
-
-                    _initSwiper( $( this ) );
 
                     return false;
                 }
@@ -116,44 +113,6 @@ var Popup = function( obj ) {
                 }
             } );
         },
-        _initSwiper = function( elem ) {
-
-            var activeElem = elem.parents( '.single-photos-slider__item' ).addClass( 'active' ),
-                elemsSwiper = elem.parents( '.single-photos-slider' ).find( '.single-photos-slider__item'),
-                elemsSwiperClones = elemsSwiper.clone();
-
-            $.each( elemsSwiperClones, function() {
-
-                var curElem = $( this),
-                    wrap = $( '<div class="swiper-slide"></div>' );
-
-                curElem.find( '.single-photos-slider__zoom').remove();
-                curElem.addClass( 'gallery-full__item swiper-slide' );
-                wrap.append( curElem );
-
-                $( '.gallery-full .swiper-wrapper' ).append( wrap );
-
-            } );
-
-            $.each( $( '.gallery-full' ).find( '.single-photos-slider__sizes' ), function(){
-
-                new DropDown ( $(this) )
-
-            } );
-            _swiperFull = new Swiper( $( '.gallery-full' ), {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                spaceBetween: 30,
-                onSlideChangeEnd: function() {
-                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
-                }
-            } );
-
-            setTimeout( function() {
-                _swiperFull.slideTo( $( '.gallery-full' ).find( '.gallery-full__item.active').parent('.swiper-slide').index(), 1);
-
-            }, 10);
-        },
         _show = function( className ) {
             _setPopupContent( className );
 
@@ -161,6 +120,11 @@ var Popup = function( obj ) {
                 overflowY: 'hidden',
                 paddingRight: _getScrollWidth()
             } );
+
+            _header.css ({
+                'z-index': 1
+            });
+
             _obj.addClass( 'popup_opened' );
             _centerWrap();
 
