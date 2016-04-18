@@ -24,7 +24,6 @@
   opacity: 0;
   visibility: hidden;
   background: url("../img/loading.gif") no-repeat center $site-loading-back;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .site__loading.show {
   opacity: 1;
