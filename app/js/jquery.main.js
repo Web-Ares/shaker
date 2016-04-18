@@ -543,7 +543,7 @@
                     img = document.createElement( 'img' );
 
                 canvas.width = $( elem ).width() * 2;
-                canvas.height = $( elem ).height() * 2;
+                canvas.height = ( $( elem ).height() + 1 ) * 2;
 
                 $( img ).on( 'load', function() {
 
@@ -571,7 +571,7 @@
                 ctx.clearRect( 0, 0, canvas.width, canvas.height );
 
                 canvas.width = $( elem ).width() * 2;
-                canvas.height = $( elem ).height() * 2;
+                canvas.height = ( $( elem ).height() + 1 ) * 2;
 
                 $( img ).on( 'load', function() {
 

@@ -133,10 +133,6 @@ var CategoryChangeContent = function ( obj ) {
                 },
                 load: function () {
 
-                    setTimeout( function() {
-                        _updateSlider( _multiSlider );
-                    }, 1 );
-
                     if( _categoriesSet.hasClass( 'categories__set_minimize' ) ) {
                         _changeCategoryView();
                     }
@@ -176,13 +172,15 @@ var CategoryChangeContent = function ( obj ) {
         _init = function() {
 
             _obj[0].obj = _self;
-            _initSwiper( _multiSlider, _singleSlider );
+
+            _setHeight( _multiSlider );
 
             _multiSlider.css( {
                 opacity: 1
             } );
+
             setTimeout( function() {
-                _updateSlider( _multiSlider );
+                _initSwiper( _multiSlider, _singleSlider );
             },100 );
 
             _addEvents();
@@ -198,12 +196,22 @@ var CategoryChangeContent = function ( obj ) {
         },
         _initSwiper = function( multi, single ) {
 
+            var countItems = multi.find( '>.swiper-wrapper>.swiper-slide' ).length - 1,
+                activeItem = Math.round( Math.random() * countItems );
+
             _swiperMulti = new Swiper( multi, {
+                initialSlide: activeItem,
                 direction: 'vertical',
                 slidesPerView: 1,
                 paginationClickable: true,
                 spaceBetween: 27,
                 mousewheelControl: true,
+                onInit: function( swiper ) {
+                    _categories.find( '.categories__set-item' ).removeClass( 'active' );
+                    _categories.find( '.categories__set-item' ).filter( '[data-slider = ' + swiper.activeIndex + ']').addClass( 'active' );
+                    _categories.find( '.categories__set-active' ).text( _categories.find( '.categories__set-item' ).filter( '.active' ).text() );
+                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' )
+                },
                 onSlideChangeEnd: function( swiper ) {
                     _categories.find( '.categories__set-item' ).removeClass( 'active' );
                     _categories.find( '.categories__set-item' ).filter( '[data-slider = ' + swiper.activeIndex + ']').addClass( 'active' );
@@ -270,14 +278,16 @@ var CategoryChangeContent = function ( obj ) {
 
                     _sliderWrap.append( $( content ) );
 
-                    _obj.find( '.multi-photos-slider').css( {
-                        opacity: 1
-                    } );
+                    setTimeout( function() {
+                        _setHeight( _obj.find( '.multi-photos-slider') );
+                        _obj.find( '.multi-photos-slider').css( {
+                            opacity: 1
+                        } );
+                    },1 );
 
                     setTimeout( function() {
                         _initSwiper( _obj.find( '.multi-photos-slider'), _obj.find( '.single-photos-slider') );
-                        _updateSlider( _obj.find( '.multi-photos-slider') );
-                    }, 1 );
+                    },100 );
 
                     if( _window.width() < 768 && !( _categoriesSet.hasClass( 'categories__set_minimize' ) ) ) {
                         _changeCategoryView();
@@ -320,10 +330,10 @@ var CategoryChangeContent = function ( obj ) {
 
         },
         _setHeight = function( multi ) {
+            _windowHeight = $( window ).height();
             multi.innerHeight( _windowHeight - multi.offset().top );
         },
         _updateSlider = function( multi ) {
-            _windowHeight = $( window ).height();
             _setHeight( multi );
             _swiperMulti.update();
         };
