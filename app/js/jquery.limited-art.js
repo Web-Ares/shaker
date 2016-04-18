@@ -173,11 +173,13 @@ var CategoryChangeContent = function ( obj ) {
 
             _obj[0].obj = _self;
 
-            _setHeight( _multiSlider );
+            setTimeout( function() {
+                _setHeight( _multiSlider );
 
-            _multiSlider.css( {
-                opacity: 1
-            } );
+                _multiSlider.css( {
+                    opacity: 1
+                } );
+            }, 1 );
 
             setTimeout( function() {
                 _initSwiper( _multiSlider, _singleSlider );
@@ -350,9 +352,7 @@ var DropDown = function ( obj ) {
         _btn = _obj.find( '.single-photos-slider__sizes-selected' ),
         _dropMenu = _obj.find( '.single-photos-slider__drop'),
         _countBlock = _obj.find( '.single-photos-slider__count'),
-        _dropMenuItem = _dropMenu.find( 'a' ),
-        _window = $( window ),
-        _body = $( 'body' );
+        _dropMenuItem = _dropMenu.find( 'a' );
 
     //private methods
     var _addEvents = function() {
@@ -472,7 +472,6 @@ var GalleryFull = function ( obj ) {
     //private properties
     var _self = this,
         _obj = obj,
-        _btn = _obj.find( '.single-photos-slider__zoom' ),
         _singleSlider = $( '.gallery-full' ),
         _btnClose = $( '.popup' ).find( '.popup__close, .popup__cancel' ),
         _swiperFull = null,
