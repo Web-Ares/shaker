@@ -228,21 +228,6 @@ var CategoryChangeContent = function ( obj ) {
                 onSlideChangeEnd: function() {
                     $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
                 }
-                //,
-                //onSlidePrevStart: function() {
-                //    single.find( '.swiper-button-next' ).show();
-                //},
-                //onSlideNextStart: function() {
-                //    single.find( '.swiper-button-prev' ).show();
-                //},
-                //onReachEnd: function(){
-                //    single.find( '.swiper-button-next' ).hide();
-                //    single.find( '.swiper-button-prev' ).show();
-                //},
-                //onReachBeginning: function(){
-                //    single.find( '.swiper-button-next' ).show();
-                //    single.find( '.swiper-button-prev' ).hide();
-                //}
             } );
 
         },

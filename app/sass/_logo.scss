@@ -24,10 +24,10 @@
   display: block;
 }
 .logo_index-black .logo__index-black {
-  display: block;
+  display: block !important;
 }
 .logo_index-black .logo__index {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: $tablet-portrait) {
