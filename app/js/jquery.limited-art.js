@@ -226,8 +226,23 @@ var CategoryChangeContent = function ( obj ) {
                 prevButton: '.swiper-button-prev',
                 spaceBetween: 30,
                 onSlideChangeEnd: function() {
-                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' )
+                    $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
                 }
+                //,
+                //onSlidePrevStart: function() {
+                //    single.find( '.swiper-button-next' ).show();
+                //},
+                //onSlideNextStart: function() {
+                //    single.find( '.swiper-button-prev' ).show();
+                //},
+                //onReachEnd: function(){
+                //    single.find( '.swiper-button-next' ).hide();
+                //    single.find( '.swiper-button-prev' ).show();
+                //},
+                //onReachBeginning: function(){
+                //    single.find( '.swiper-button-next' ).show();
+                //    single.find( '.swiper-button-prev' ).hide();
+                //}
             } );
 
         },
@@ -492,6 +507,8 @@ var GalleryFull = function ( obj ) {
                         _body.find( '.gallery-full .swiper-wrapper' ).html( '' );
                         _swiperFull = null;
 
+                        $( '.single-photos-slider')[0].swiper.update();
+
                     }, 300 );
 
                 }
@@ -554,8 +571,8 @@ var GalleryFull = function ( obj ) {
 
 
             _swiperFull = new Swiper( _singleSlider, {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
+                nextButton: _singleSlider.find( '.swiper-button-next' ),
+                prevButton: _singleSlider.find( '.swiper-button-prev' ),
                 spaceBetween: 30,
                 onSlideChangeEnd: function() {
                     $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
