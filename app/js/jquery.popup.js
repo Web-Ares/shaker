@@ -91,7 +91,6 @@ var Popup = function( obj ) {
             _btnShow.on( {
                 click: function() {
                     _show( $( this ).attr( 'data-popup' ) );
-
                     return false;
                 }
             } );
@@ -117,8 +116,7 @@ var Popup = function( obj ) {
             _setPopupContent( className );
 
             _scrollConteiner.css( {
-                overflowY: 'hidden',
-                paddingRight: _getScrollWidth()
+                overflowY: 'hidden'
             } );
 
             _header.css ({
