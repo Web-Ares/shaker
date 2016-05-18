@@ -17,17 +17,17 @@
 .logo .logo__inner {
   display: block;
 }
-.site__header_index .logo .logo__inner {
+.site__header_index .logo__inner {
   display: none;
 }
-.site__header_index .logo .logo__index {
+.site__header_index .logo__index {
   display: block;
 }
-.logo_index-black .logo__index-black {
-  display: block !important;
+.site__header_index .logo_index-black .logo__index-black {
+  display: block;
 }
-.logo_index-black .logo__index {
-  display: none !important;
+.site__header_index .logo_index-black .logo__index {
+  display: none;
 }
 
 @media (min-width: $tablet-portrait) {

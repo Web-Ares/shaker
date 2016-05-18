@@ -441,7 +441,7 @@ textarea.site__area {
     @include flexbox();
     @include flex-direction();
     @include flex-wrap( wrap );
-    @include justify-content( center );
+    @include justify-content( flex-start );
     @include align-items( center );
   }
   .site__content__inner {
