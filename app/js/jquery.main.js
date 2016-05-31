@@ -114,6 +114,34 @@
                     }
                 } );
 
+                $(document).on(
+                    "click",
+                    ".site__menu",
+                    function( event ){
+                        event = event || window.event;
+
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else {
+                            event.cancelBubble = true;
+                        }
+                    }
+                );
+
+                $(document).on(
+                    "click",
+                    "body",
+                    function(){
+
+                        if( _showBtn.hasClass( 'opened' ) ) {
+
+                            _showBtn.removeClass( 'opened' );
+
+                        }
+
+                    }
+                );
+
             },
             _init = function() {
                 _obj[ 0 ].obj = _self;
