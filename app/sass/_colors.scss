@@ -1,5 +1,6 @@
 /*---------- popup ----------*/
-$popup-back: rgba( 0, 0, 0, 1 );
+$popup-back1: rgba( 0, 0, 0, 1 );
+$popup-back2: rgba( 255, 255, 255, 1 );
 $popup-close-back: rgba( 255, 255, 255, 1 );
 /*---------- /popup ---------*/
 
@@ -67,11 +68,14 @@ $enter-form-forgot-color: #5d5d5d;
 /*---------- /enter-form ---------*/
 
 /*---------- single-photos-slider ---------*/
-$single-photos-slider-but-back: rgba(255,255,255,0.9);
+$single-photos-slider-but-back1: rgba(255,255,255,0.9);
+$single-photos-slider-but-back2: rgba(0,0,0,0.1);
 $single-photos-slider-info-back: rgba(255,255,255,0.8);
 $single-photos-slider-info-color: #000;
 $single-photos-slider-like-back1: rgba(255,255,255,0.5);
 $single-photos-slider-like-back2: rgba(255,255,255,1);
+$single-photos-slider-like-back3: rgba(0,0,0,0.1);
+$single-photos-slider-like-back4: rgba(0,0,0,0.3);
 $single-photos-slider-zoom-back1: rgba(255,255,255,0.5);
 $single-photos-slider-zoom-back2: rgba(255,255,255,1);
 $single-photos-slider-drop-back: #fff;

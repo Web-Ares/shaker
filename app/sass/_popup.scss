@@ -8,9 +8,12 @@
   width: 0;
   height: 0;
   z-index: 10000;
-  background: $popup-back;
+  background: $popup-back1;
   text-align: center;
   transition: opacity 500ms ease-in-out;
+}
+.popup_white {
+  background: $popup-back2;
 }
 .popup_opened {
   opacity: 1;

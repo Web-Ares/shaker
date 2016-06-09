@@ -9,7 +9,7 @@
   height: 66px;
   margin-top: -38px;
   border-radius: 0 3px 3px 0;
-  background: $single-photos-slider-but-back;
+  background: $single-photos-slider-but-back1;
   transition: background 0.2s linear;
   transform: translateZ(0);
   
@@ -172,6 +172,10 @@
     &:last-child {
       top: 0;
       left: 50.5%;
+    }
+
+    &:first-child {
+      left: 0;
     }
   }
   .single-photos-slider__info {

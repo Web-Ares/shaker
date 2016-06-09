@@ -133,11 +133,7 @@
                     "body",
                     function(){
 
-                        if( _showBtn.hasClass( 'opened' ) ) {
-
-                            _showBtn.removeClass( 'opened' );
-
-                        }
+                        _closeMenu();
 
                     }
                 );
@@ -147,7 +143,7 @@
                 _obj[ 0 ].obj = _self;
                 _addEvents();
             },
-            _openMenu = function( elem )  {
+            _openMenu = function( elem ) {
 
                 var curItem = elem;
 
@@ -161,16 +157,21 @@
                 }
 
             },
+            _closeMenu = function() {
+
+                if( _showBtn.hasClass( 'opened' ) ) {
+
+                    _showBtn.removeClass( 'opened' );
+
+                }
+
+            },
             _resetStyle = function() {
                 _showBtn.removeClass( 'opened' );
             };
 
         _init();
 
-        _self.addEvents = function () {
-            _body.find( '.site__menu-btn').on();
-            _body.find( '.site__menu-link').on();
-        }
     };
 
     var Page = function ( obj ) {
@@ -191,6 +192,7 @@
             _dataIndex = _content.hasClass('site_index'),
             _body = $( 'body' ),
             _loading = $( '.site__loading'),
+            _menu = $( '.site__menu-btn' ),
             _fireEvent,
             _oldDelta = null;
 
@@ -347,7 +349,6 @@
                         } );
 
                     }
-
                     //_loading.removeClass( 'show' );
 
                 }, 300 );
@@ -483,6 +484,10 @@
                 path = pathSplit[0];
 
                 history.pushState( { foo: path }, null, path + '.html' );
+
+                if( _menu.hasClass( 'opened' ) ) {
+                    _menu.removeClass( 'opened' );
+                }
 
             },
             _checkScroll = function( direction ) {
