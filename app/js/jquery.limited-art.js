@@ -3,6 +3,12 @@
 
     $( function() {
 
+        $.each( $( '.art .site__loading' ), function() {
+
+            new Preloader ( $( this ) );
+
+        } );
+
         $.each( $( '.art' ), function() {
 
             new CategoryChangeContent ( $( this ) );
@@ -44,6 +50,7 @@ var CategoryChangeContent = function ( obj ) {
         _swiperSingle,
         _flagAdd = true,
         _flagRemove = false,
+        _header = $( '.site__header' ),
         _multiSlider = _obj.find( '.multi-photos-slider' ),
         _singleSlider = _obj.find( '.single-photos-slider' ),
         _categories = _obj.find( '.categories' ),
@@ -179,6 +186,20 @@ var CategoryChangeContent = function ( obj ) {
                 _multiSlider.css( {
                     opacity: 1
                 } );
+
+                setTimeout( function() {
+
+                    $( '.art .site__loading' ).removeClass( 'show' );
+                    _header.attr( 'style', '' );
+
+                }, 400 );
+
+                setTimeout( function() {
+
+                    $( '.art .site__loading' ).remove();
+
+                }, 800 );
+
             }, 1 );
 
             setTimeout( function() {

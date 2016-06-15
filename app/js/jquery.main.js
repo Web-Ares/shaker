@@ -349,6 +349,16 @@
                         } );
 
                     }
+                    if( newWrapper.find( '.art' ).length ) {
+
+
+                        $.each( newWrapper.find( '.art .site__loading'), function () {
+
+                            new Preloader( $( this ) );
+
+                        } );
+
+                    }
                     //_loading.removeClass( 'show' );
 
                 }, 300 );
@@ -629,5 +639,53 @@
     };
 
 } )();
+
+var Preloader = function( obj ) {
+
+    //private properties
+    var _self = this,
+        _obj = obj,
+        _header = $( '.site__header' ),
+        _window = $( window);
+
+    //private methods
+    var _addEvents = function() {
+
+            _window.on( {
+                load: function() {
+
+                    setTimeout( function() {
+
+                        _obj.removeClass( 'show' );
+                        _header.attr( 'style', '' );
+
+                    }, 400 );
+
+                    setTimeout( function() {
+
+                        _obj.remove();
+
+                    }, 800 );
+
+                }
+            } );
+        },
+        _showPreloader = function() {
+
+            _header.css( {
+                'z-index': 1
+            } );
+            _obj.addClass( 'show' );
+
+        },
+        _init = function() {
+            _obj[ 0 ].obj = _self;
+            _showPreloader();
+            _addEvents();
+
+        };
+
+    _init();
+};
 
 

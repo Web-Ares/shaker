@@ -9,6 +9,8 @@
             <!-- art -->
             <div class="art">
 
+                <div class="site__loading"></div>
+
                 <!-- categories -->
                 <div class="categories" data-action="php/categories.php">
 
