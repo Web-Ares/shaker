@@ -559,8 +559,22 @@ var GalleryFull = function ( obj ) {
                 nextButton: _singleSlider.find( '.swiper-button-next' ),
                 prevButton: _singleSlider.find( '.swiper-button-prev' ),
                 spaceBetween: 30,
-                onSlideChangeEnd: function() {
+                onInit: function( swiper ) {
+                    if( swiper.slides.eq( swiper.activeIndex ).find( '.single-photos-slider__item_white').length ){
+                        $( '.popup').addClass( 'popup_white' );
+                    } else {
+                        $( '.popup').removeClass( 'popup_white' );
+                    }
+                },
+                onSlideChangeEnd: function( swiper ) {
                     $( '.single-photos-slider__sizes-selected' ).removeClass ( 'active' );
+                },
+                onSlideChangeStart: function( swiper ) {
+                    if( swiper.slides.eq( swiper.activeIndex ).find( '.single-photos-slider__item_white').length ){
+                        $( '.popup').addClass( 'popup_white' );
+                    } else {
+                        $( '.popup').removeClass( 'popup_white' );
+                    }
                 }
             } );
 
