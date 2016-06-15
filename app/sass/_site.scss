@@ -23,7 +23,14 @@
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  background: url("../img/loading.gif") no-repeat center $site-loading-back;
+  background: url("../img/loading.gif") no-repeat center 65% $site-loading-back;
+
+  img {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translateX(-50%);
+  }
 }
 .site__loading.show {
   opacity: 1;
