@@ -1,7 +1,7 @@
 .imprint {
   max-width: 610px;
-  margin: 0 auto;
-  padding: 0;
+  margin: 0 auto!important;
+  padding: 0!important;
   font: 300 18px 'Oxygen', sans-serif;
 
   h2{
@@ -15,7 +15,7 @@
   }
 
   p{
-    margin: 0;
+    margin: 0!important;
   }
 
   a{
