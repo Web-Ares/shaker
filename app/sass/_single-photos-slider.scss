@@ -94,16 +94,43 @@
   width: 41px;
   height: 36px;
   border-radius: 3px;
-  background-image: url("../img/like.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 27px 24px;
   background-color: $single-photos-slider-like-back1;
   text-indent: -9999px;
   transition: background 0.2s linear;
+
+  &:after,
+  &:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../img/like.png");
+    background-position: 50% 6px;
+    background-repeat: no-repeat;
+    background-size: 27px 60px;
+    transition: opacity .3s ease;
+    -webkit-transition: opacity .3s ease;
+    content: '';
+  }
+
+  &:after{
+    opacity: 0;
+    background-position: 50% -30px;
+  }
+
 }
 .single-photos-slider__like.liked {
   background-color: $single-photos-slider-like-back2;
+
+  &:before{
+    opacity: 0;
+  }
+
+  &:after{
+    opacity: 1;
+  }
+
 }
 .single-photos-slider__zoom {
   position: absolute;

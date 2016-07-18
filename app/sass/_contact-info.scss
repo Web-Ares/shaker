@@ -15,7 +15,7 @@
   line-height: 24px;
 }
 .contact-info__place {
-  margin: 0 0 7px;
+  margin: 0 0 17px;
 }
 .contact-info__signature {
   height: 70px;
@@ -40,6 +40,15 @@
   color: $site-content-inner-color1;
   cursor: default;
 }
+.contact-info__imprint-link{
+  text-align: right;
+  font-size: 16px;
+
+  a{
+    color: #5d5d5d;
+  }
+
+}
 
 @media (min-width: $tablet-portrait) {
   .contact-info__item {
@@ -55,6 +64,11 @@
   .contact-info__name {
     font-size: 25px;
     line-height: 28px;
+  }
+  .contact-info__imprint-link {
+    position: absolute;
+    bottom: -100px;
+    right: 15px;
   }
 }
 

@@ -1,0 +1,44 @@
+.imprint {
+  max-width: 610px;
+  margin: 0 auto;
+  padding: 0;
+  font: 300 18px 'Oxygen', sans-serif;
+
+  h2{
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 35px;
+  }
+
+  h3{
+    font-weight: 300;
+  }
+
+  p{
+    margin: 0;
+  }
+
+  a{
+    color: rgb(186, 186, 186);
+  }
+
+  &__item{
+    margin-bottom: 25px;
+    font-style: normal;
+  }
+
+  &__text{
+
+    p{
+      text-align: justify;
+    }
+
+  }
+
+}
+
+@media (min-width: $tablet-portrait) {
+
+}
+
+
