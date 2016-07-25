@@ -3,6 +3,7 @@
 }
 
 @media (min-width: $tablet-portrait) {
+
   .language {
     display: block;
     overflow: hidden;
@@ -21,7 +22,7 @@
   .language a {
     display: inline-block;
     vertical-align: top;
-    padding: 1px 2px 0 0;
+    padding: 1px 4px;
     color: $language-color1;
 
     &:hover {
