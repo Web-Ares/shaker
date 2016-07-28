@@ -1,0 +1,27 @@
+.instagram {
+  display: none;
+}
+
+@media (min-width: $tablet-portrait) {
+
+  .site__header_index  .instagram {
+    display: block;
+    position: absolute;
+    top: 22px;
+    right: 240px;
+    width: 21px;
+    height: 21px;
+    background: url(../img/instagram.png) no-repeat 0 0;
+    background-size: cover;
+    transition: opacity .3s ease;
+    -webkit-transition: opacity .3s ease;
+
+    &:hover{
+      opacity: .8;
+    }
+
+  }
+
+}
+
+

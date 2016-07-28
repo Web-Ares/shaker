@@ -494,7 +494,8 @@ var GalleryFull = function ( obj ) {
     var _self = this,
         _obj = obj,
         _singleSlider = $( '.gallery-full' ),
-        _btnClose = $( '.popup' ).find( '.popup__close, .popup__cancel' ),
+        _popup = $( '.popup' ),
+        _btnClose = _popup.find( '.popup__close, .popup__cancel' ),
         _swiperFull = null,
         _body = $( 'body');
 
@@ -503,6 +504,8 @@ var GalleryFull = function ( obj ) {
 
             _btnClose.on( {
                 click: function() {
+
+                    console.log( _popup.find( '.swiper-slide-active' ).index() );
 
                     setTimeout( function(){
 
@@ -513,7 +516,8 @@ var GalleryFull = function ( obj ) {
                         _body.find( '.gallery-full .swiper-wrapper' ).html( '' );
                         _swiperFull = null;
 
-                        $( '.single-photos-slider')[0].swiper.update();
+                        $( '.single-photos-slider' )[0].swiper.update();
+                        _body.find( '.swiper-slide-active .single-photos-slider' )[0].swiper.slideTo( _popup.find( '.swiper-slide-active' ).index() , 200, false);
 
                     }, 300 );
 
@@ -570,11 +574,8 @@ var GalleryFull = function ( obj ) {
 
             }, 10 );
 
-
-
         },
         _initSwiper = function() {
-
 
             _swiperFull = new Swiper( _singleSlider, {
                 nextButton: _singleSlider.find( '.swiper-button-next' ),

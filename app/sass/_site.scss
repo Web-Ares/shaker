@@ -203,6 +203,12 @@
     background: $site-menu-link-hover-color;
   }
 }
+.site__menu-link_instagram{
+  display: none;
+}
+.site__header_index .site__menu-link_instagram{
+  display: block;
+}
 .site__menu_black .site__menu-btn span {
   background: $site-menu-btn-back3;
 
@@ -434,6 +440,9 @@ textarea.site__area {
   .site__menu {
     top: 26px;
     right: 23px;
+  }
+  .site__menu-link_instagram{
+    display: none!important;
   }
   .site__center {
     padding: 0 25px;
