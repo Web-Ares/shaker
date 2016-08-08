@@ -18,7 +18,16 @@
     line-height: 12px;
     @include main-font5();
     cursor: default;
+    z-index: 5;
   }
+
+  .site__control .language{
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+
+
   .language a {
     display: inline-block;
     vertical-align: top;

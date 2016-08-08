@@ -68,9 +68,9 @@ var Popup = function( obj ) {
                     overflowY: 'auto'
                 });
 
-                _header.css ({
+                /*_header.css ({
                     'z-index': 3
-                });
+                });*/
 
                 _obj.removeClass( 'popup_hide' );
 
@@ -119,9 +119,9 @@ var Popup = function( obj ) {
                 overflowY: 'hidden'
             } );
 
-            _header.css ({
+            /*_header.css ({
                 'z-index': 1
-            });
+            });*/
 
             _obj.addClass( 'popup_opened' );
             _centerWrap();

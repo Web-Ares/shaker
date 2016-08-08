@@ -15,6 +15,11 @@
 }
 
 @media (min-width: $tablet-portrait) {
+
+  .personal-wish-list__send {
+    padding-right: 15px;
+  }
+
   .personal-wish-list__layout > div{
     display: inline-block;
     vertical-align: top;

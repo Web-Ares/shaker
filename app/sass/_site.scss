@@ -8,7 +8,6 @@
 }
 .site__layout {
   position: relative;
-  z-index: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 1;
 }
@@ -39,7 +38,6 @@
 }
 .site__header {
   position: absolute;
-  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
@@ -101,6 +99,7 @@
   position: absolute;
   top: 17px;
   right: 10px;
+  z-index: 5;
 }
 .site__menu-btn {
   display: block;
@@ -252,7 +251,6 @@
 }
 .site__content {
   position: relative;
-  z-index: 2;
   padding: 70px 0 0;
   font-size: 16px;
   line-height: 25px;
@@ -471,6 +469,15 @@ textarea.site__area {
     display: inline-block;
     vertical-align: top;
     margin: 0 0 0 5px;
+  }
+  .site__control{
+    position: absolute;
+    top: 26px;
+    right: 90px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    z-index: 5;
   }
 }
 @media (min-width: $tablet-landscape) {
