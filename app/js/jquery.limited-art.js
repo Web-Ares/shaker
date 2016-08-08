@@ -507,6 +507,8 @@ var GalleryFull = function ( obj ) {
 
                     var curSlide = _popup.find( '.swiper-slide-active' ).index();
 
+                    console.log(curSlide)
+
                     setTimeout( function(){
 
                         $( '.gallery-full')[0].swiper.destroy( false, true );
