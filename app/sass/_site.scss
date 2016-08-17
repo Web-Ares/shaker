@@ -299,6 +299,15 @@
     text-decoration: underline;
   }
 }
+.site__control{
+  position: absolute;
+  top: 26px;
+  right: 90px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 5;
+}
 .site__center {
   position: relative;
   max-width: 990px;
@@ -469,15 +478,6 @@ textarea.site__area {
     display: inline-block;
     vertical-align: top;
     margin: 0 0 0 5px;
-  }
-  .site__control{
-    position: absolute;
-    top: 26px;
-    right: 90px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 5;
   }
 }
 @media (min-width: $tablet-landscape) {
