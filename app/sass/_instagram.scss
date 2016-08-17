@@ -2,7 +2,6 @@
   display: block;
   width: 21px;
   height: 21px;
-  margin-right: 25px;
   background: url(../img/instagram.png) no-repeat 0 0;
   background-size: cover;
   transition: opacity .3s ease;
@@ -11,8 +10,14 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .site__header_index  .instagram:hover{
-    opacity: .8;
+  .site__header_index  .instagram {
+
+    margin-right: 25px;
+
+    &:hover{
+      opacity: .8;
+    }
+
   }
 
 }

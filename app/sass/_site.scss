@@ -301,8 +301,8 @@
 }
 .site__control{
   position: absolute;
-  top: 26px;
-  right: 90px;
+  top: 18px;
+  right: 60px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -478,6 +478,10 @@ textarea.site__area {
     display: inline-block;
     vertical-align: top;
     margin: 0 0 0 5px;
+  }
+  .site__control{
+    top: 26px;
+    right: 90px;
   }
 }
 @media (min-width: $tablet-landscape) {
