@@ -1,4 +1,4 @@
-<div class="site__layout" data-href="php/login.php">
+<div class="site__layout site_contact" data-href="php/login.php">
 
     <!-- site__content -->
     <div class="site__content site__content_pad-bot site__content_center full-height">

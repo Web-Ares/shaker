@@ -190,6 +190,7 @@
             _content = $( '.site__layout' ),
             _dataScroll = _content.data( 'scroll' ),
             _dataIndex = _content.hasClass('site_index'),
+            _dataContact = _content.hasClass('site_contact'),
             _body = $( 'body' ),
             _loading = $( '.site__loading'),
             _menu = $( '.site__menu-btn' ),
@@ -299,6 +300,7 @@
 
                 _dataScroll = newWrapper.data( 'scroll' );
                 _dataIndex = newWrapper.hasClass('site_index');
+                _dataContact = newWrapper.hasClass( 'site_contact' );
 
                 _wrapper.addClass( 'site__content_top' );
                 _obj.append( newWrapper );
@@ -307,6 +309,12 @@
                     $( '.site__header' ).addClass( 'site__header_index' )
                 } else {
                     $( '.site__header' ).removeClass( 'site__header_index' )
+                }
+
+                if( _dataContact ) {
+                    $( '.site__header' ).addClass( 'site__header_contact' )
+                } else {
+                    $( '.site__header' ).removeClass( 'site__header_contact' )
                 }
 
                 setTimeout( function() {
@@ -529,6 +537,12 @@
                     $( '.site__header' ).addClass( 'site__header_index' )
                 } else if( !_dataIndex ) {
                     $( '.site__header' ).removeClass( 'site__header_index' )
+                }
+
+                if( _dataContact && !( $( '.site__header').hasClass( 'site__header_contact' ) )) {
+                    $( '.site__header' ).addClass( 'site__header_contact' )
+                } else if( !_dataContact ) {
+                    $( '.site__header' ).removeClass( 'site__header_contact' )
                 }
             };
 

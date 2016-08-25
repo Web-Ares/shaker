@@ -1,4 +1,5 @@
-.site__header_index  .instagram {
+.site__header_index  .instagram,
+.site__header_contact  .instagram {
   display: block;
   width: 21px;
   height: 21px;
@@ -10,7 +11,8 @@
 
 @media (min-width: $tablet-portrait) {
 
-  .site__header_index  .instagram {
+  .site__header_index  .instagram,
+  .site__header_contact  .instagram {
 
     margin-right: 25px;
 
