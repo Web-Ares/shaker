@@ -44,6 +44,8 @@
   vertical-align: top;
   padding: 2px 0;
   color: $categories-btn-color;
+  white-space: nowrap;
+  min-width: 135px;
 }
 .categories__set_minimize {
   margin-left: 0;
