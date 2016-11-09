@@ -228,7 +228,7 @@ var CategoryChangeContent = function ( obj ) {
                 slidesPerView: 1,
                 paginationClickable: true,
                 spaceBetween: 27,
-                mousewheelControl: true,
+                mousewheelControl: false,
                 onInit: function( swiper ) {
                     _categories.find( '.categories__set-item' ).removeClass( 'active' );
                     _categories.find( '.categories__set-item' ).filter( '[data-slider = ' + swiper.activeIndex + ']').addClass( 'active' );
