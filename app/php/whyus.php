@@ -33,6 +33,8 @@
                 </div>
                 <!-- site__content__row -->
 
+                <div class="contact-info__imprint-link"><a href="#">Imprint</a></div>
+
             </div>
             <!-- /site__content__inner -->
 

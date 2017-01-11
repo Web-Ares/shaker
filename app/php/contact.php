@@ -88,6 +88,8 @@
                     </div>
                     <!-- /contact-info__item -->
 
+                    <div class="contact-info__imprint-link"><a href="#">Imprint</a></div>
+
                 </div>
                 <!-- /contact-info -->
 
