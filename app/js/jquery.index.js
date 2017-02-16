@@ -24,7 +24,6 @@ var HomeSlider = function ( obj ) {
     //private methods
     var _onEvents = function () {
 
-            _swiper.detachEvents();
 
         },
         _init = function () {
